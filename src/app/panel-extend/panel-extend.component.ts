@@ -6,13 +6,13 @@ import { IMouseDelta } from "@ng-public/directive/mousescroll/mousescroll.interf
 import { DraggablePort } from "@ng-public/directive/draggable/draggable.interface";
 import { PanelScopeEnchantmentService } from "./panel-scope-enchantment/panel-scope-enchantment.service";
 import { PanelWidgetModel } from "./panel-widget/model";
-import { NzDropdownMenuComponent, NzContextMenuService } from "ng-zorro-antd";
 import { cloneDeep } from "lodash";
 import { PanelSoulService } from "./panel-soul/panel-soul.service";
 import { PanelExtendMoveBackService } from "./panel-extend-move-back.service";
 import { AppDataService } from "../appdata/appdata.service";
 import { PanelExtendQuickShortcutsService } from "./panel-extend-quick-shortcuts.service";
 import { PanelSeniorVesselEditService } from "./panel-senior-vessel-edit/panel-senior-vessel-edit.service";
+import {NzContextMenuService, NzDropdownMenuComponent} from 'ng-zorro-antd/dropdown';
 
 @Component({
     selector: "app-panel-extend",

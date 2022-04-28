@@ -4,10 +4,10 @@ import { ImageModel } from "../model/image.model";
 import { TSelectType, ImageGroupModel } from "../model";
 import { AppDataService } from "app/appdata/appdata.service";
 import { GalleryGroupService } from "../gallery-group/gallery-group.service";
-import { NzMessageService } from "ng-zorro-antd";
 import { AppService } from "app/app.service";
 import { get } from "lodash";
 import { GalleryPictureColumnService } from "../gallery-picture-column/gallery-picture-column.service";
+import {NzMessageService} from 'ng-zorro-antd/message';
 
 @Component({
     selector: "app-gallery-picture-checked",

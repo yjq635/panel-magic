@@ -1,7 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { ImageGroupModel } from "../model";
 import { GalleryGroupService } from "./gallery-group.service";
-import { NzMessageService, NzModalService } from "ng-zorro-antd";
+import {NzMessageService} from 'ng-zorro-antd/message';
+import {NzModalService} from 'ng-zorro-antd/modal';
 
 @Component({
     selector: "app-gallery-group",

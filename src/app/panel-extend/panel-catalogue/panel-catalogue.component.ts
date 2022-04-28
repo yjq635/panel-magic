@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { NzNotificationService, NzModalService, NzMessageService } from "ng-zorro-antd";
+import {NzNotificationService} from "ng-zorro-antd/notification";
 import { cloneDeep } from "lodash";
 
 import { PanelCatalogueService } from "./panel-catalogue.service";
@@ -10,6 +10,8 @@ import { PanelExtendService } from "../panel-extend.service";
 import { TabBarViewService } from "../panel-widget/all-widget-unit/tab-bar-view/tab-bar-view.service";
 import { PanelSeniorVesselEditService } from "../panel-senior-vessel-edit/panel-senior-vessel-edit.service";
 import { NewPageModel, NewGroupModel } from "./model";
+import {NzMessageService} from 'ng-zorro-antd/message';
+import {NzModalService} from 'ng-zorro-antd/modal';
 
 @Component({
     selector: "app-panel-catalogue",
@@ -84,14 +86,14 @@ export class PanelCatalogueComponent implements OnInit {
     public acceptDeleteOperate(page: CataDataModel, index: number, event: MouseEvent): void {
         event.stopPropagation();
         const cataData = this.appDataService.appDataModel.cata_data;
-        if (cataData.length == 1 && cataData[0].pages.length == 1) {
+        if (cataData.length === 1 && cataData[0].pages.length === 1) {
             this.nzMessageService.error("请至少保留一个页面");
         } else {
             this.nzModalService.confirm({
                 nzTitle: `是否确认删除页面 <span class="colorff7700">${page.pages[index].name}</span> ?`,
                 nzContent: "删除后将取消所有链接到该页面的点击事件",
                 nzOkText: "确认",
-                nzOkType: "danger",
+                nzOkType: "default",
                 nzOnOk: () => {
                     this.handleDelPage(page.pages, index);
                     page.delPage(index);
@@ -108,14 +110,14 @@ export class PanelCatalogueComponent implements OnInit {
     public acceptDeleteGroup(group: CataDataModel, index: number, event: MouseEvent): void {
         event.stopPropagation();
         const cataData = this.appDataService.appDataModel.cata_data;
-        if (cataData.length == 1) {
+        if (cataData.length === 1) {
             this.nzMessageService.error("请至少保留一个分组");
         } else {
             this.nzModalService.confirm({
                 nzTitle: `是否确认删除分组 <span class="colorff7700">${group.group}</span> ?`,
                 nzContent: "删除后将一并删除该分组下所有页面以及所有链接到对应页面的点击事件",
                 nzOkText: "确认",
-                nzOkType: "danger",
+                nzOkType: "default",
                 nzOnOk: () => {
                     this.handleDelGroup(group);
                     this.appDataService.appDataModel.delGroup(index);
@@ -130,9 +132,9 @@ export class PanelCatalogueComponent implements OnInit {
      * 同时修改app_data里的页面名称
      */
     public editGroupAndPageName(newStr: string, target: CataDataModel | PagesModel, type: "group" | "page"): void {
-        if (type == "group") {
+        if (type === "group") {
             (<CataDataModel>target).group = newStr;
-        } else if (type == "page") {
+        } else if (type === "page") {
             (<PagesModel>target).name = newStr;
             const page: AppDataObjectModel = this.appDataService.appDataModel.app_data[(<PagesModel>target).router];
             if (page) {
@@ -151,9 +153,9 @@ export class PanelCatalogueComponent implements OnInit {
      */
     public handleAddNewPage(index: number = -1): void {
         const newPageModel = this.panelCatalogueService.newPageModel;
-        if (newPageModel.name == "") {
+        if (newPageModel.name === "") {
             this.nzNotificationService.create("error", "错误提示", "请填写页面名称");
-        } else if (newPageModel.groupId == 0) {
+        } else if (newPageModel.groupId === 0) {
             this.nzNotificationService.create("error", "错误提示", "请选择分组");
         } else {
             this.copyNewPageRouter = this.appDataService.appDataModel.addNewPage(newPageModel, index);
@@ -166,7 +168,7 @@ export class PanelCatalogueComponent implements OnInit {
      */
     public handleAddNewGroup(): void {
         const newGroupModel = this.panelCatalogueService.newGroupModel;
-        if (newGroupModel.name == "") {
+        if (newGroupModel.name === "") {
             this.nzNotificationService.create("error", "错误提示", "请填写分组名称");
         } else {
             this.appDataService.appDataModel.addNewGroup(newGroupModel.name);
@@ -187,12 +189,12 @@ export class PanelCatalogueComponent implements OnInit {
     public handleDelPage(target: Array<PagesModel>, index: number): void {
         if (Array.isArray(target) && target.length > 0) {
             // 如果删除的是当前的页面才需要切换
-            if (target[index].router == this.appDataService.currentPageData$.value.router) {
+            if (target[index].router === this.appDataService.currentPageData$.value.router) {
                 const len = target.length;
                 this.appDataService.setCurrentPageData(target[index + 1 >= len ? 0 : index + 1]);
             }
             // 如果当前被删的页面是主页则替换成别的首页
-            if (target[index].router == this.homeRouter) {
+            if (target[index].router === this.homeRouter) {
                 this.appDataService.setAppConfigData(
                     "homePageRouter",
                     this.appDataService.currentPageData$.value.router

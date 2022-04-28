@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import { AmapAutocompleteWrapper, AmapAutocompleteService } from "ngx-amap";
-import { NzNotificationService } from "ng-zorro-antd";
+import {NzNotificationService} from "ng-zorro-antd/notification";
 import { MapModel, IMarkersable } from "./model";
 import { PanelEventService } from "../../panel-event.service";
 import { TapMapHandler } from "../../event-handler/tap-map-handler";

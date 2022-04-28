@@ -3,7 +3,7 @@ import { HsFileService } from "app/service";
 import { Observable, BehaviorSubject, of } from "rxjs";
 import { ImageModel } from "../model/image.model";
 import { ImageGalleryService } from "../image-gallery.service";
-import { NzMessageService } from "ng-zorro-antd";
+import {NzMessageService} from 'ng-zorro-antd/message';
 
 @Injectable({
     providedIn: "root",

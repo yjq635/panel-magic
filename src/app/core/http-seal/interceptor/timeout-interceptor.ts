@@ -2,7 +2,6 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/c
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { timeout, delay, retryWhen, scan, tap } from "rxjs/operators";
-import { NzNotificationService } from "ng-zorro-antd";
 
 /** 超时时间 */
 const DEFAULTTIMEOUT = 8000;

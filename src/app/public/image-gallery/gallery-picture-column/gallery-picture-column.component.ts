@@ -5,8 +5,9 @@ import { GalleryPictureColumnService } from "./gallery-picture-column.service";
 import { ImageModel } from "../model/image.model";
 import { ImageGroupModel, TSelectType } from "../model";
 import { ImageGalleryService } from "../image-gallery.service";
-import { NzMessageService, NzModalService } from "ng-zorro-antd";
 import { cloneDeep } from "lodash";
+import {NzMessageService} from 'ng-zorro-antd/message';
+import {NzModalService} from 'ng-zorro-antd/modal';
 
 @Component({
     selector: "app-gallery-picture-column",
@@ -170,7 +171,7 @@ export class GalleryPictureColumnComponent implements OnInit, OnDestroy {
         const pictureGroupMap = this.galleryGroupService.pictureGroupListMap;
         const nzModal = this.nzModalService.confirm({
             nzTitle: `是否确认删除该图片？`,
-            nzOkType: "danger",
+            nzOkType: "default",
             nzOnOk: () => {
                 nzModal["nzOkLoading"] = true;
                 this.galleryPictureColumnService.delImage([data.id]).subscribe(b => {
@@ -201,7 +202,7 @@ export class GalleryPictureColumnComponent implements OnInit, OnDestroy {
             const pictureGroupMap = this.galleryGroupService.pictureGroupListMap;
             const nzModal = this.nzModalService.confirm({
                 nzTitle: `是否确认批量删除所选图片?`,
-                nzOkType: "danger",
+                nzOkType: "default",
                 nzOnOk: () => {
                     const ids = picList.map(_e => _e.id);
                     nzModal["nzOkLoading"] = true;

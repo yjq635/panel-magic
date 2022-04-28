@@ -12,7 +12,6 @@ import { Subscription, BehaviorSubject, fromEvent } from "rxjs";
 import { PanelExtendService } from "../panel-extend.service";
 import { debounceTime, map, distinctUntilChanged } from "rxjs/operators";
 import { ILocation } from "../model";
-import { NzContextMenuService, NzDropdownMenuComponent } from "ng-zorro-antd";
 import { PanelScopeTextEditorComponent } from "./panel-scope-text-editor/panel-scope-text-editor.component";
 import { cloneDeep } from "lodash";
 import { DraggableTensileCursorService } from "./draggable-tensile-cursor.service";
@@ -21,6 +20,7 @@ import { PanelScaleplateService } from "../panel-scaleplate/panel-scaleplate.ser
 import { PanelExtendQuickShortcutsService } from "../panel-extend-quick-shortcuts.service";
 import { PanelAssistArborService } from "../panel-assist-arbor/panel-assist-arbor.service";
 import { PanelWidgetModel } from "../panel-widget/model";
+import {NzContextMenuService, NzDropdownMenuComponent} from 'ng-zorro-antd/dropdown';
 
 @Component({
     selector: "app-panel-scope-enchantment",

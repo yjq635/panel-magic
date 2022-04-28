@@ -11,7 +11,7 @@ import { Observable, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { cloneDeep } from "lodash";
 
-import { NzNotificationService } from "ng-zorro-antd";
+import {NzNotificationService} from "ng-zorro-antd/notification";
 
 import { IBackHand } from "../interface";
 

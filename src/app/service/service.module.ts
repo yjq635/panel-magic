@@ -11,10 +11,11 @@ import { HsFileService } from "./hs-files/hs-file.service";
     declarations: [],
 })
 export class ServicesModule {
-    static forRoot(): ModuleWithProviders {
-        return <ModuleWithProviders>{
+    static forRoot(): ModuleWithProviders<any> {
+        return <ModuleWithProviders<any>>{
             ngModule: ServicesModule,
             providers: [HsXcxCanActivate, HsFileService],
         };
     }
 }
+

@@ -5,7 +5,7 @@ import { RouterModule } from "@angular/router";
 import { CoreModule } from "@ng-core";
 import { NgModule } from "@angular/core";
 import { CookieModule } from "ngx-cookie";
-
+import {CommonModule} from '@angular/common';
 import { AppService } from "./app.service";
 
 import { HomeComponent } from "./app-home.component";
@@ -32,11 +32,11 @@ registerLocaleData(zh);
 import { DirectiveService } from "@ng-public/directive/directive.service";
 
 import { FormsModule } from "@angular/forms";
-import { NgZorroAntdModule, NZ_I18N, zh_CN } from "ng-zorro-antd";
 
 @NgModule({
     declarations: [AppComponent, HomeComponent],
     imports: [
+        CommonModule,
         BrowserModule,
         HttpClientModule,
         BrowserAnimationsModule,
@@ -44,13 +44,12 @@ import { NgZorroAntdModule, NZ_I18N, zh_CN } from "ng-zorro-antd";
         ImageGalleryModule,
         PanelExtendModule,
         CoreModule,
-        CookieModule.forRoot(),
-        ServicesModule.forRoot(),
-        RouterModule.forRoot(AppRoutes, { useHash: true }),
-        FormsModule,
-        NgZorroAntdModule,
+        CookieModule,
+        ServicesModule,
+        RouterModule.forRoot(AppRoutes),
+        FormsModule
     ],
-    providers: [AppService, DirectiveService, AppDataService, { provide: NZ_I18N, useValue: zh_CN }],
+    providers: [AppService, DirectiveService, AppDataService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

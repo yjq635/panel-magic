@@ -1,4 +1,4 @@
-import { Inject } from "@angular/core";
+import {Inject, Injectable} from '@angular/core';
 import { IndexedDBAngular } from "indexeddb-angular";
 import { PanelExtendService } from "./panel-extend.service";
 import { Subject, Observable, BehaviorSubject } from "rxjs";
@@ -13,8 +13,8 @@ export interface IDBData {
  * 每一个需要存储的集合对象信息
  */
 export class MoveBackDBInfoModel {
-    public dbCurrentIndex: number = 0;
-    public dbKey: number = -1;
+    public dbCurrentIndex = 0;
+    public dbKey = -1;
     public get isMove(): boolean {
         return this.dbCurrentIndex < this.dbKey;
     }
@@ -24,7 +24,7 @@ export class MoveBackDBInfoModel {
     constructor() {}
 }
 
-@Inject({
+@Injectable({
     providedIn: "root",
 })
 export class PanelExtendMoveBackService {

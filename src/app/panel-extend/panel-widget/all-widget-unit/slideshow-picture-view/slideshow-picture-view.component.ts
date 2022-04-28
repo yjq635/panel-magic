@@ -4,7 +4,7 @@ import { PictureAdModel, ImageItemModel } from "./slideshow-picture-site-view/pi
 import { Subscription } from "rxjs";
 import { WidgetModel } from "../../model/widget.model";
 import { debounceTime } from "rxjs/operators";
-import { NzCarouselContentDirective, NzCarouselComponent } from "ng-zorro-antd";
+import {NzCarouselComponent, NzCarouselContentDirective} from 'ng-zorro-antd/carousel';
 
 @Component({
     selector: "app-slideshow-picture-view",

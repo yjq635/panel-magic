@@ -30,13 +30,13 @@ export class VesselWidgetModel {
         if (data) {
             for (const key in this) {
                 if ((<Object>data).hasOwnProperty(key)) {
-                    if (key == "statusWarehouseCollection") {
+                    if (key === "statusWarehouseCollection") {
                         let arr = [];
                         if (Array.isArray(data.statusWarehouseCollection)) {
                             data.statusWarehouseCollection.forEach(e => {
                                 arr.push(new VesselStatusCollectionModel(e));
                             });
-                            const pro = new Promise(res => {
+                            const pro = new Promise<void>(res => {
                                 this.statusWarehouseCollection = arr;
                                 setTimeout(() => res());
                             });

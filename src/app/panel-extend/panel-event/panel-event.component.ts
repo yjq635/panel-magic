@@ -6,11 +6,11 @@ import { OuterSphereHasAuxlModel } from "../panel-scope-enchantment/model";
 import { EntranceModel } from "./model";
 import { EventSiteModel } from "./model/event-site.model";
 import { PanelExtendService } from "../panel-extend.service";
-import { NzTabComponent } from "ng-zorro-antd";
 import { panelWidgetComponentObj } from "../panel-widget/all-widget-container";
 import { PanelWidgetModel } from "../panel-widget/model";
 import { PanelSeniorVesselEditService } from "../panel-senior-vessel-edit/panel-senior-vessel-edit.service";
 import { EventModel } from "./event-handler";
+import {NzTabComponent} from 'ng-zorro-antd/tabs';
 
 @Component({
     selector: "app-panel-event",

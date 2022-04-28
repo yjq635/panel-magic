@@ -3,13 +3,13 @@ import { Subscription } from "rxjs";
 
 import { PictureAdImageItemService } from "./picture-ad-image-item.service";
 import { ImageGalleryService } from "@ng-public/image-gallery/image-gallery.service";
-import { NzNotificationService } from "ng-zorro-antd";
 import { DragulaService } from "ng2-dragula";
 
 import { PictureAdModel, ImageItemModel } from "./model";
 import { PanelScopeEnchantmentService } from "../../../../../panel-scope-enchantment/panel-scope-enchantment.service";
 import { environment } from "environments/environment";
 import { ImageModel } from "@ng-public/image-gallery/model/image.model";
+import {NzNotificationService} from 'ng-zorro-antd/notification';
 
 @Component({
     selector: "app-picture-ad-image-item",

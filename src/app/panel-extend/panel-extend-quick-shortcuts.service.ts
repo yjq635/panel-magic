@@ -10,13 +10,13 @@ import { DraggablePort } from "@ng-public/directive/draggable/draggable.interfac
 import { PanelScaleplateService } from "./panel-scaleplate/panel-scaleplate.service";
 import { DraggableTensileCursorService } from "./panel-scope-enchantment/draggable-tensile-cursor.service";
 import { cloneDeep, get } from "lodash";
-import { NzMessageService } from "ng-zorro-antd";
 import { map } from "rxjs/operators";
 import { ImageModel } from "@ng-public/image-gallery/model";
 import { PanelSoulService } from "./panel-soul/panel-soul.service";
 import { PanelSeniorVesselEditService } from "./panel-senior-vessel-edit/panel-senior-vessel-edit.service";
 import { AppDataService } from "app/appdata/appdata.service";
 import { panelWidgetComponentObj } from "./panel-widget/all-widget-container";
+import {NzMessageService} from 'ng-zorro-antd/message';
 
 @Injectable({
     providedIn: "root",

@@ -4,9 +4,9 @@ import { MockModel } from "./MockModel";
 
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 
-import { NzNotificationService } from "ng-zorro-antd";
 
 import { AppDataService } from "../../appdata/appdata.service";
+import {NzNotificationService} from 'ng-zorro-antd/notification';
 
 @Injectable()
 export class HsXcxCanActivate implements CanActivate {
@@ -22,7 +22,7 @@ export class HsXcxCanActivate implements CanActivate {
     ): Observable<boolean> | Promise<boolean> | boolean {
         const appId = route.params.id;
         this.appDataService.appDataModel.app_id = appId;
-        if (appId == undefined) {
+        if (appId === undefined) {
             this.nzNotificationService.create("error", "请求错误", "请输入正确的appID");
             return false;
         } else {

@@ -2,9 +2,9 @@ import { Component, OnInit, Input, ViewChild } from "@angular/core";
 
 import { Subscription } from "rxjs";
 
-import { NzNotificationService } from "ng-zorro-antd";
 import { AmapAutocompleteService, AmapAutocompleteWrapper } from "ngx-amap";
 import { WidgetModel } from "../../../model/widget.model";
+import {NzNotificationService} from 'ng-zorro-antd/notification';
 
 @Component({
     selector: "app-map-site-view",
