@@ -39,7 +39,7 @@ export class PictureAdImageItemComponent implements OnInit {
     ) {
         // 监听拖拽返回的方法
         this.dragulaRX$ = this.dragulaService.drop.subscribe(res => {
-            if (res[0] == "pc-ad-bag") {
+            if (res[0] === "pc-ad-bag") {
                 let _first_index = +res[1]["dataset"]["dragindex"];
                 let _last_index = +res[4]["dataset"]["dragindex"];
                 // 然后开始改变位置

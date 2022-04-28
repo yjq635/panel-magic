@@ -169,17 +169,17 @@ export class PanelScaleplateComponent implements OnInit, OnDestroy {
         const handleDrawLine = (i: number) => {
             this.drawLine(
                 h,
-                { moveStart: i * 10, moveEnd: i % 10 == 0 ? 0 : 10 },
+                { moveStart: i * 10, moveEnd: i % 10 === 0 ? 0 : 10 },
                 { lineStart: i * 10, lineEnd: 16 },
                 "#ccc"
             );
             this.drawLine(
                 h,
-                { moveStart: i * 10 + 1, moveEnd: i % 10 == 0 ? 0 : 10 },
+                { moveStart: i * 10 + 1, moveEnd: i % 10 === 0 ? 0 : 10 },
                 { lineStart: i * 10 + 1, lineEnd: 16 },
                 "#f9fafb"
             );
-            if (i % 10 == 0) {
+            if (i % 10 === 0) {
                 h.font = "normal normal bold 12px";
                 h.fillStyle = "#2b3c4d";
                 h.fillText(i * 10 + "", i * 10 + 4, 10);
@@ -210,17 +210,17 @@ export class PanelScaleplateComponent implements OnInit, OnDestroy {
         const handleDrawLine = (i: number) => {
             this.drawLine(
                 v,
-                { moveStart: i % 10 == 0 ? 0 : 10, moveEnd: i * 10 },
+                { moveStart: i % 10 === 0 ? 0 : 10, moveEnd: i * 10 },
                 { lineStart: 16, lineEnd: i * 10 },
                 "#ccc"
             );
             this.drawLine(
                 v,
-                { moveStart: i % 10 == 0 ? 0 : 10, moveEnd: i * 10 - 1 },
+                { moveStart: i % 10 === 0 ? 0 : 10, moveEnd: i * 10 - 1 },
                 { lineStart: 16, lineEnd: i * 10 - 1 },
                 "#f9fafb"
             );
-            if (i % 10 == 0) {
+            if (i % 10 === 0) {
                 textV.save();
                 textV.textAlign = "center";
                 textV.textBaseline = "middle";
@@ -249,10 +249,10 @@ export class PanelScaleplateComponent implements OnInit, OnDestroy {
         this.mouseMove$ = fromEvent(type == "h" ? this.hRuler : this.vRuler, "mousemove").subscribe(
             (move: MouseEvent) => {
                 this.zone.run(() => {
-                    if (type == "h") {
+                    if (type === "h") {
                         temLine.setInCanvasNum(move.pageX - 216 - (this.panelInfoModel.left - 216));
                         temLine.setInPanelNum(move.pageX - 216);
-                    } else if (type == "v") {
+                    } else if (type === "v") {
                         temLine.setInCanvasNum(move.pageY - 66 - (this.panelInfoModel.top - 66));
                         temLine.setInPanelNum(move.pageY - 66);
                     }
@@ -278,7 +278,7 @@ export class PanelScaleplateComponent implements OnInit, OnDestroy {
         const line = new LineModel(type);
         line.setInPanelNum(temPanelNum.inPanelNum);
         line.setInCanvasNum(temPanelNum.inCanvasNum);
-        this.panelScaleplateService[type == "h" ? "addHLine" : "addVLine"](line);
+        this.panelScaleplateService[type === "h" ? "addHLine" : "addVLine"](line);
         this.panelScaleplateService.isShowLine$.next(true);
     }
 
@@ -321,8 +321,8 @@ export class PanelScaleplateComponent implements OnInit, OnDestroy {
      */
     public acceptDraggleLine(drag: DraggablePort, line: LineModel): void {
         if (drag) {
-            line.setInCanvasNum(line.inCanvasNum + drag[line.type == "h" ? "left" : "top"]);
-            line.setInPanelNum(line.inPanelNum + drag[line.type == "h" ? "left" : "top"]);
+            line.setInCanvasNum(line.inCanvasNum + drag[line.type === "h" ? "left" : "top"]);
+            line.setInPanelNum(line.inPanelNum + drag[line.type === "h" ? "left" : "top"]);
         }
     }
 
@@ -330,7 +330,7 @@ export class PanelScaleplateComponent implements OnInit, OnDestroy {
      * 删除横向和纵向的已绘制好的线条
      */
     public acceptDelLine(index: number, type: lineType): void {
-        this.panelScaleplateService[type == "h" ? "delHLine" : "delVLine"](index);
+        this.panelScaleplateService[type === "h" ? "delHLine" : "delVLine"](index);
     }
 
     /**

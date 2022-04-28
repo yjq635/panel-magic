@@ -11,7 +11,7 @@
         "build": "npm run updateBuild && ng build --prod --aot",
         "buildTest": "npm run updateBuild && ng build --configuration=testProd --aot",
         "testAot": "./node_modules/.bin/ngc --project src/tsconfig.debug.json",
-        "start": "ng serve --host 0.0.0.0 --disable-host-check --port 4400 --live-reload false",
+        "start": "ng serve --host 0.0.0.0 --disable-host-check --port 4400",
         "server": "superstatic / --port 8112 --host 0.0.0.0 --gzip"
     },
     "private": true,

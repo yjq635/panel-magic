@@ -6,7 +6,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angul
 
 
 import { AppDataService } from "../../appdata/appdata.service";
-import {NzNotificationService} from 'ng-zorro-antd/notification';
+import {NzNotificationService} from "ng-zorro-antd/notification";
 
 @Injectable()
 export class HsXcxCanActivate implements CanActivate {

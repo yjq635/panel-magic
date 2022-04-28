@@ -40,9 +40,9 @@ export class PanelWidgetDetailsSiteComponent implements OnInit {
         this.outerSphereInsetWidgetRX$ = this.panelScopeEnchantmentService.scopeEnchantmentModel.outerSphereInsetWidgetList$.subscribe(
             value => {
                 this.initDetailsTitle();
-                if (Array.isArray(value) && value.length == 1) {
+                if (Array.isArray(value) && value.length === 1) {
                     this.createSiteComponent(value[0].type);
-                } else if (value.length != 1) {
+                } else if (value.length !== 1) {
                     this.panelWidgetDetailsSiteService.detailsModel.isShow$.next(false);
                     if (this.widgetSiteContainer) this.widgetSiteContainer.clear();
                     if (this.currentComponentRef) this.currentComponentRef.destroy();

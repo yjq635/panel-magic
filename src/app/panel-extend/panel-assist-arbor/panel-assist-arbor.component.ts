@@ -60,7 +60,7 @@ export class PanelAssistArborComponent implements OnInit {
                             .value;
                         if (Array.isArray(iW)) {
                             iW.forEach(w => {
-                                if (w.type == "combination" && Array.isArray(w.autoWidget.content)) {
+                                if (w.type === "combination" && Array.isArray(w.autoWidget.content)) {
                                     w.autoWidget.content.forEach(cw => {
                                         if (cw.profileModel.combinationWidgetData$) {
                                             this.handleCombinationAllChildWidgetProportion(cw);
@@ -129,9 +129,9 @@ export class PanelAssistArborComponent implements OnInit {
      * 接收前进和后退的回调
      */
     public handleMoveBack(type: "move" | "back"): void {
-        if (type == "back") {
+        if (type === "back") {
             this.panelExtendMoveBackService.acquireBackDBData();
-        } else if (type == "move") {
+        } else if (type === "move") {
             this.panelExtendMoveBackService.acquireMoveDBData();
         }
     }

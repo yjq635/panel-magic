@@ -56,13 +56,13 @@ export class PanelWidgetClipPathComponent implements OnInit {
     ) {
         this.clipPointDragRX$ = this.clipPathResizeMaskService.launchMouseDragClipPoint.subscribe(value => {
             if (value && value.drag) {
-                if (this.clipPathResizeMaskService.clipPathMaskModel.currentPathType$.value == "inset") {
+                if (this.clipPathResizeMaskService.clipPathMaskModel.currentPathType$.value === "inset") {
                     this.handleInsetClipDragPoint(value.drag, value.point);
-                } else if (this.clipPathResizeMaskService.clipPathMaskModel.currentPathType$.value == "polygon") {
+                } else if (this.clipPathResizeMaskService.clipPathMaskModel.currentPathType$.value === "polygon") {
                     this.handlePoltgonClipDragPoint(value.drag, value.point);
-                } else if (this.clipPathResizeMaskService.clipPathMaskModel.currentPathType$.value == "circle") {
+                } else if (this.clipPathResizeMaskService.clipPathMaskModel.currentPathType$.value === "circle") {
                     this.handleCircleClipDragPoint(value.drag, value.point);
-                } else if (this.clipPathResizeMaskService.clipPathMaskModel.currentPathType$.value == "ellipse") {
+                } else if (this.clipPathResizeMaskService.clipPathMaskModel.currentPathType$.value === "ellipse") {
                     this.handleEllipseClipDragPoint(value.drag, value.point);
                 }
             }
@@ -73,7 +73,7 @@ export class PanelWidgetClipPathComponent implements OnInit {
                     if (this.profileTensileMoveRX$) this.profileTensileMoveRX$.unsubscribe();
                     this.profileTensileMoveRX$ = pro.valueChange$.pipe(debounceTime(1)).subscribe(() => {
                         if (
-                            this.clipPathResizeMaskService.clipPathMaskModel.currentPathType$.value == "circle" &&
+                            this.clipPathResizeMaskService.clipPathMaskModel.currentPathType$.value === "circle" &&
                             this.clipCirclePath
                         ) {
                             this.clipCirclePath.handleCalcCircleSidePoint(this.widget.profileModel);
@@ -111,7 +111,7 @@ export class PanelWidgetClipPathComponent implements OnInit {
      */
     public calcPer(drag: DraggablePort, targ: number, type: "width" | "height" = "width"): number {
         const calc =
-            (((targ / 100) * this.widgetProfile[type] + drag[type == "width" ? "left" : "top"]) /
+            (((targ / 100) * this.widgetProfile[type] + drag[type === "width" ? "left" : "top"]) /
                 this.widgetProfile[type]) *
             100;
         return calc <= 0 ? 0 : calc >= 100 ? 100 : calc;
@@ -211,11 +211,11 @@ export class PanelWidgetClipPathComponent implements OnInit {
      * 拖拽圆形的裁切点
      */
     public handleCircleClipDragPoint(drag: DraggablePort, point: ClipPointModel): void {
-        if (point.type == "circle-c") {
+        if (point.type === "circle-c") {
             point.left = this.calcPer(drag, point.left);
             point.top = this.calcPer(drag, point.top, "height");
             this.clipCirclePath.handleCalcCircleSidePoint(this.widget.profileModel);
-        } else if (point.type == "circle-side") {
+        } else if (point.type === "circle-side") {
             const k = this.clipCirclePath.calcSlopeK(this.widget.profileModel);
             const b = this.clipCirclePath.calcSlopeB(this.widget.profileModel);
             point.left += drag.left;
@@ -273,15 +273,15 @@ export class PanelWidgetClipPathComponent implements OnInit {
                 // 验证横向是否已达到边缘，是的话则不允许左右移动
                 const isSideV = (): boolean => {
                     return (
-                        this.calcPer(drag, this.clipInsetPath.insetL.left) == 0 ||
-                        this.calcPer(drag, this.clipInsetPath.insetR.left) == 100
+                        this.calcPer(drag, this.clipInsetPath.insetL.left) === 0 ||
+                        this.calcPer(drag, this.clipInsetPath.insetR.left) === 100
                     );
                 };
                 // 验证纵向是否已达到边缘，是的话则不允许上下移动
                 const isSideH = (): boolean => {
                     return (
-                        this.calcPer(drag, this.clipInsetPath.insetT.top, "height") == 0 ||
-                        this.calcPer(drag, this.clipInsetPath.insetB.top, "height") == 100
+                        this.calcPer(drag, this.clipInsetPath.insetT.top, "height") === 0 ||
+                        this.calcPer(drag, this.clipInsetPath.insetB.top, "height") === 100
                     );
                 };
                 if (!isSideV()) {

@@ -168,7 +168,7 @@ export class PanelSeniorVesselEditComponent implements OnInit, OnDestroy {
             "autoWidget.content.vesselWidget.statusWarehouseCollection"
         );
         const vessel = this.vesselWidgetModel$.value;
-        if (statusList && Array.isArray(statusList) && statusList.length == 0) {
+        if (statusList && Array.isArray(statusList) && statusList.length === 0) {
             vessel.addNewStatusCollection("状态 1");
             // 同时默认选中第一个状态;
             vessel.currentStatusId = vessel.statusWarehouseCollection[0].uniqueId;

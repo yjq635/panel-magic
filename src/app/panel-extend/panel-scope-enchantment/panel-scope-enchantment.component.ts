@@ -57,11 +57,11 @@ export class PanelScopeEnchantmentComponent implements OnInit, OnDestroy {
     // 当前选中的唯一一个widget组件
     public get onlyOneWidgetInfo(): PanelWidgetModel {
         const s = this.scopeEnchantment.outerSphereInsetWidgetList$.value;
-        return Array.isArray(s) && s.length == 1 ? s[0] : null;
+        return Array.isArray(s) && s.length === 1 ? s[0] : null;
     }
 
     public get clipPathService(): ClipPathResizeMaskService {
-        return this.clipPathResizeMaskService
+        return this.clipPathResizeMaskService;
     }
 
     constructor(

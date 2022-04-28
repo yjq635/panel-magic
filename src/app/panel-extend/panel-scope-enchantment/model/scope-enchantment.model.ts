@@ -86,7 +86,7 @@ export class ScopeEnchantmentModel {
      * 参数isLaunch表示是否允许发射数据源
      */
     public launchProfileOuterSphere(arg: OuterSphereHasAuxlModel, isLaunch: boolean): void {
-        if (isLaunch == true) {
+        if (isLaunch === true) {
             this.profileOuterSphere$.next(arg);
         } else {
             this.valueProfileOuterSphere.setData({
@@ -143,7 +143,7 @@ export class ScopeEnchantmentModel {
                 /**
                  * 如果被选的所有组件当中有组合组件combination，则需要重新计算其子集的所有widget轮廓数值
                  */
-                if (w.type == "combination") {
+                if (w.type === "combination") {
                     this.handleLocationInsetWidget(increment, w.autoWidget.content);
                 }
             });
@@ -182,7 +182,7 @@ export class ScopeEnchantmentModel {
         };
         let currentMoveIndex: number = 0;
         for (let e in moveObj) {
-            if (moveObj[e] == true) {
+            if (moveObj[e] === true) {
                 currentMoveIndex = <number>(<any>e);
                 break;
             }

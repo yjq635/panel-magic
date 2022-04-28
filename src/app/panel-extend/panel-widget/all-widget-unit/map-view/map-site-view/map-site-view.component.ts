@@ -40,7 +40,7 @@ export class MapSiteViewComponent implements OnInit {
         this.plugin.then(res => {
             // console.log( res )
             this._subscription = res.on("select").subscribe(event => {
-                if (event.poi.id == "") {
+                if (event.poi.id === "") {
                     this.nzNotificationService.create("warning", "地址错误", "请重新输入地址");
                 } else {
                     let _location = event.poi.location;
@@ -58,7 +58,7 @@ export class MapSiteViewComponent implements OnInit {
 
     ngAfterViewInit() {
         this.map.mapClick.subscribe(res => {
-            if (res["type"] == "click") {
+            if (res["type"] === "click") {
                 this.map.setCenter(res["lnglat"]);
                 this.autoWidget["content"]["mapModel"]["coordinates"] = [res["lnglat"]["M"], res["lnglat"]["O"]];
                 this.map.getCity().then(_res => {
@@ -76,7 +76,7 @@ export class MapSiteViewComponent implements OnInit {
 
     // 接收标记拖拽的函数
     public acceptMarkerMovEnd(res: any): void {
-        if (res["type"] == "dragend") {
+        if (res["type"] === "dragend") {
             this.map.setCenter(res["lnglat"]);
             this.autoWidget["content"]["mapModel"]["coordinates"] = [res["lnglat"]["M"], res["lnglat"]["O"]];
             this.map.getCity().then(_res => {

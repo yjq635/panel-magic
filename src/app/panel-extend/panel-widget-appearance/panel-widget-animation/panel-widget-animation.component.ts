@@ -41,7 +41,7 @@ export class PanelWidgetAnimationComponent implements OnInit, OnDestroy {
                 if (value) {
                     const insetWidget = this.panelScopeEnchantmentService.scopeEnchantmentModel
                         .outerSphereInsetWidgetList$.value;
-                    if (insetWidget.length == 1) {
+                    if (insetWidget.length === 1) {
                         const onlyWidget = insetWidget[0];
                         this.panelAnimationModel.setData(onlyWidget.panelAnimationModel.getValue());
                     } else {

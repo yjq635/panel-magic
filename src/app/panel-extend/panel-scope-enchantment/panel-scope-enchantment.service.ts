@@ -36,9 +36,9 @@ export class PanelScopeEnchantmentService {
      * 根据传入的widget参数设置鼠标移入的轮廓绘制
      */
     public handleTemporaryProfile(widget: PanelWidgetModel, type: "enter" | "out"): void {
-        if (type == "enter") {
+        if (type === "enter") {
             this.scopeEnchantmentModel.profileTemporary$.next(widget.profileModel);
-        } else if (type == "out") {
+        } else if (type === "out") {
             this.scopeEnchantmentModel.resetProfileTemporary$();
         }
     }
@@ -93,7 +93,7 @@ export class PanelScopeEnchantmentService {
             // 计算出最小的left,最小的top，最大的width和height
             const calcResult = this.calcProfileOuterSphereInfo();
             // 如果insetWidget数量大于一个则不允许开启旋转,且旋转角度重置
-            if (oriArr.length == 1) {
+            if (oriArr.length === 1) {
                 calcResult.isRotate = true;
                 calcResult.rotate = oriArr[0].rotate;
             } else {
@@ -220,7 +220,7 @@ export class PanelScopeEnchantmentService {
                     outerSphere.left = aux.vLineList[i] - outerSphere.width + offsetAmount.left;
                     outerSphere.rLine = true;
                 }
-                if (outerSphere.lLine == true && outerSphere.rLine == true) break;
+                if (outerSphere.lLine == true && outerSphere.rLine === true) break;
             }
             for (let i: number = 0, l: number = aux.hLineList.length; i < l; i++) {
                 if (Math.abs(aux.hLineList[i] - mouseCoord[1] + offsetAmount.top * -1) <= diffNum) {
@@ -231,7 +231,7 @@ export class PanelScopeEnchantmentService {
                     outerSphere.top = aux.hLineList[i] - outerSphere.height + offsetAmount.top;
                     outerSphere.bLine = true;
                 }
-                if (outerSphere.tLine == true && outerSphere.bLine == true) break;
+                if (outerSphere.tLine == true && outerSphere.bLine === true) break;
             }
             for (let i: number = 0, l: number = aux.hcLineList.length; i < l; i++) {
                 if (Math.abs(aux.hcLineList[i] - (mouseCoord[1] + outerSphere.height / 2)) <= diffNum) {

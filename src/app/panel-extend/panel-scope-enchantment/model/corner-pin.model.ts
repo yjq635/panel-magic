@@ -47,7 +47,7 @@ export class CornerPinModel {
 
     constructor(data: { [key: string]: string | number }) {
         if (data) {
-            this.type = data.type == "cursor" ? "cursor" : "location";
+            this.type = data.type === "cursor" ? "cursor" : "location";
             this.location = ELocation[data.location];
             this.cursor = ECursor[data.cursor];
         }

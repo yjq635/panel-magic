@@ -20,7 +20,7 @@ export class PanelSlideshowPictureSiteComponent implements OnInit, OnDestroy {
     ) {
         this.profileOutershpere$ = this.panelScopeEnchantmentService.scopeEnchantmentModel.outerSphereInsetWidgetList$.subscribe(
             value => {
-                if (Array.isArray(value) && value.length == 1 && value.find(w => w.type == "slideshowpicture")) {
+                if (Array.isArray(value) && value.length === 1 && value.find(w => w.type == "slideshowpicture")) {
                     Promise.resolve(null).then(() => {
                         this.panelScopeEnchantmentService.scopeEnchantmentModel.valueProfileOuterSphere.isRotate = false;
                     });

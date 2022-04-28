@@ -3,7 +3,7 @@
     <div class="show-image-item">
         <ul class="show-item" [dragula]="'pc-ad-bag'">
             <li
-                class="show-list p-r pc-ad-bag {{ pais.templateType == 6 ? '' : 'dashed' }}"
+                class="show-list p-r pc-ad-bag {{ pais.templateType === 6 ? '' : 'dashed' }}"
                 [attr.data-dragindex]="i"
                 *ngFor="let list of pictureAdModel.imageList; index as i"
             >
@@ -52,7 +52,7 @@
 
     <!-- 提示语句 -->
     <div class="picture-tip-content">
-        <span class="danger" *ngIf="pictureAdModel.imageList.length == 0">请选择一个图片</span>
+        <span class="danger" *ngIf="pictureAdModel.imageList.length === 0">请选择一个图片</span>
         <span class="gird">最多添加10个轮播图片，拖动选中的轮播图片可对其排序</span>
     </div>
 </div>

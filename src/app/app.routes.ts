@@ -12,7 +12,6 @@ export const AppRoutes = [
     {
         path: "",
         data: { type: "normal" },
-        canActivate: [HsXcxCanActivate],
         redirectTo: "mock",
         pathMatch: "full",
     },

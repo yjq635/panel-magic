@@ -22,8 +22,8 @@ export class PanelMapSiteComponent implements OnInit, OnDestroy {
             value => {
                 if (
                     Array.isArray(value) &&
-                    value.length == 1 &&
-                    value.find(w => w.type == "map") &&
+                    value.length === 1 &&
+                    value.find(w => w.type === "map") &&
                     this.panelScopeEnchantmentService.scopeEnchantmentModel.valueProfileOuterSphere
                 ) {
                     Promise.resolve(null).then(() => {

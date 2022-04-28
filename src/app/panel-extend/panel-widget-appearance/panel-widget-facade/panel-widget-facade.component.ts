@@ -77,7 +77,7 @@ export class PanelWidgetFacadeComponent implements OnInit {
     public acceptLinkageTag(bool: boolean): void {
         const facade = this.panelFacade;
         facade.isRadiusAssociated = bool;
-        if (bool == true) {
+        if (bool === true) {
             const maxRadius = Math.max(facade.ltRadius, facade.rtRadius, facade.lbRadius, facade.rbRadius);
             facade.setData({
                 ltRadius: maxRadius,
@@ -93,7 +93,7 @@ export class PanelWidgetFacadeComponent implements OnInit {
      */
     public acceptFourRadiusChange(number: number): void {
         const facade = this.panelFacade;
-        if (facade.isRadiusAssociated == true) {
+        if (facade.isRadiusAssociated === true) {
             facade.setData({
                 ltRadius: number,
                 rtRadius: number,
