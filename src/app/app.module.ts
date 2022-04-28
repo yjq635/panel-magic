@@ -44,9 +44,9 @@ import { FormsModule } from "@angular/forms";
         ImageGalleryModule,
         PanelExtendModule,
         CoreModule,
-        CookieModule,
-        ServicesModule,
-        RouterModule.forRoot(AppRoutes),
+        CookieModule.forRoot(),
+        ServicesModule.forRoot(),
+        RouterModule.forRoot(AppRoutes, { useHash: true }),
         FormsModule
     ],
     providers: [AppService, DirectiveService, AppDataService],

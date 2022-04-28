@@ -1,6 +1,6 @@
 import { HomeComponent } from "./app-home.component";
 
-import { HsXcxCanActivate } from "./service/hs-xcx/hs-xcx.activate.service";
+import { HsXcxCanActivate } from './service';
 
 export const AppRoutes = [
     {

@@ -74,7 +74,7 @@ export class AppDataService {
         this.appDataModel.setData(data);
         // 设置当前默认选中的第一个页面，如果一个页面都没有则创建一个首页
         if (Array.isArray(this.appDataModel.cata_data) && this.appDataModel.cata_data.length > 0) {
-            let firstGroup = this.appDataModel.cata_data[0];
+            const firstGroup = this.appDataModel.cata_data[0];
             if (!(Array.isArray(firstGroup.pages) && firstGroup.pages.length > 0)) {
                 firstGroup.pages = [];
                 // 说明没有默认页面则创建一个首页
@@ -89,9 +89,9 @@ export class AppDataService {
             this.setCurrentPageData(this.appDataModel.cata_data[0].pages[0]);
         }
         // 检测首页page的router,如果没有则默认第一页为首页
-        if (data.app_config && data.app_config.homePageRouter)
+        if (data.app_config && data.app_config.homePageRouter) {
             this.setAppConfigData("homePageRouter", data.app_config.homePageRouter);
-        else this.setAppConfigData("homePageRouter", this.appDataModel.cata_data[0].pages[0].router);
+        } else { this.setAppConfigData("homePageRouter", this.appDataModel.cata_data[0].pages[0].router); }
 
         this.launchAppData$.next(this.appDataModel);
     }
@@ -100,8 +100,9 @@ export class AppDataService {
      * 删除某一个视图容器里的组件的时候，也对应的删除app_data里的eles数据
      */
     public delAppDataElesComponent(index: number): void {
-        if (this.appDataModel.app_data[this.currentPageData$.value.router])
+        if (this.appDataModel.app_data[this.currentPageData$.value.router]) {
             this.appDataModel.app_data[this.currentPageData$.value.router].eles.splice(index, 1);
+        }
     }
 
     /**
