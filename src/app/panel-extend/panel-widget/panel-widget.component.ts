@@ -96,7 +96,7 @@ export class PanelWidgetComponent implements OnInit, OnChanges {
                     ? this.panelScopeEnchantmentService.toggleOuterSphereInsetWidget(this.widget)
                     : this.panelScopeEnchantmentService.onlyOuterSphereInsetWidget(this.widget);
             } else {
-                if (event.shiftKey === true) this.panelScopeEnchantmentService.toggleOuterSphereInsetWidget(this.widget);
+                if (event.shiftKey === true) { this.panelScopeEnchantmentService.toggleOuterSphereInsetWidget(this.widget); }
             }
             this.openMouseMoveLaunch();
         }
@@ -127,10 +127,13 @@ export class PanelWidgetComponent implements OnInit, OnChanges {
             let isOpenSaveIndexedDB: boolean = false;
             mouseMove$ = fromEvent(document, "mousemove").subscribe(() => (isOpenSaveIndexedDB = true));
             mouseUp$ = fromEvent(document, "mouseup").subscribe(() => {
-                if (mouseUp$) mouseUp$.unsubscribe();
-                if (mouseMove$) mouseMove$.unsubscribe();
+                if (mouseUp$) { mouseUp$.unsubscribe(); }
+                if (mouseMove$) { mouseMove$.unsubscribe(); }
                 // 记录主轮廓的鼠标坐标点与实际样式坐标的差值
                 const pro = this.panelScopeEnchantmentService.scopeEnchantmentModel.valueProfileOuterSphere;
+                if (!pro){
+                    return;
+                }
                 pro.resetAuxl();
                 if (isOpenSaveIndexedDB) {
                     this.panelExtendService.launchSaveIndexedDB$.next();

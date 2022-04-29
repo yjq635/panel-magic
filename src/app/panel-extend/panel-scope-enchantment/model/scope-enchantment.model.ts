@@ -105,6 +105,9 @@ export class ScopeEnchantmentModel {
      */
     public handleProfileOuterSphereLocationInsetWidget(increment: DraggablePort): void {
         const pro = this.valueProfileOuterSphere;
+        if (!pro) {
+            return;
+        }
         pro.mouseCoord[0] += increment.left;
         pro.mouseCoord[1] += increment.top;
         pro.setData({

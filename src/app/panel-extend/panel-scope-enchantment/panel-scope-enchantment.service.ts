@@ -200,6 +200,9 @@ export class PanelScopeEnchantmentService {
     public handleAuxlineCalculate(
         target: OuterSphereHasAuxlModel = this.scopeEnchantmentModel.valueProfileOuterSphere
     ): void {
+        if (!target) {
+            return;
+        }
         const outerSphere = target;
         const offsetAmount = outerSphere.offsetAmount;
         const aux = this.auxliLineModel$.value;
