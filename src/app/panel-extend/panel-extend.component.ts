@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, NgZone, TemplateRef } from "@angular/core";
+import {Component, OnInit, OnDestroy, ViewChild, ElementRef, NgZone, TemplateRef, AfterViewInit} from '@angular/core';
 import { Subscription, BehaviorSubject, fromEvent } from "rxjs";
 import { PanelExtendService } from "./panel-extend.service";
 import { TransformMatrixModel, TrackModel, SelectionRectModel, PanelInfoModel, ScopeEnchantmentModel } from "./model";
@@ -19,7 +19,7 @@ import {NzContextMenuService, NzDropdownMenuComponent} from 'ng-zorro-antd/dropd
     templateUrl: "./panel-extend.component.html",
     styleUrls: ["./panel-extend.component.scss", "./track.component.scss"],
 })
-export class PanelExtendComponent implements OnInit, OnDestroy {
+export class PanelExtendComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChild("panelContextMenuEl", { static: true }) public panelContextMenuEl: TemplateRef<any>;
     @ViewChild("freePanelMainEl", { static: true }) public set panelMainEl(v: ElementRef) {
         this.panelExtendService.panelMainEl = v;

@@ -77,7 +77,7 @@ export class PanelWidgetComponent implements OnInit, OnChanges {
             }
             this.panelLayerService.launchMouseEnterOut.next({ widget: this.widget, type: type });
         }
-        this.isViseableVesselTip = type === "enter" ? true : false;
+        this.isViseableVesselTip = type === "enter";
     }
 
     /**
