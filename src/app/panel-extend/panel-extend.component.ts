@@ -117,7 +117,7 @@ export class PanelExtendComponent implements OnInit, OnDestroy, AfterViewInit {
             if (value) {
                 // 每次页面切换则创建DB集合
                 this.panelExtendMoveBackService.createCollections(value.router).subscribe(b => {
-                    if (b) this.panelExtendService.launchSaveIndexedDB$.next();
+                    if (b) { this.panelExtendService.launchSaveIndexedDB$.next(); }
                 });
                 const currentForDateElse = this.appDataService.currentAppDataForinPageData.eles;
                 if (Array.isArray(currentForDateElse)) {
@@ -149,14 +149,14 @@ export class PanelExtendComponent implements OnInit, OnDestroy, AfterViewInit {
         // 先清空所有轮廓数据
         this.panelScopeEnchantmentService.scopeEnchantmentModel.emptyAllProfile();
         // 开启鼠标按下和松开的监听
-        if (this.listenMouseDownRX$) this.listenMouseDownRX$.unsubscribe();
+        if (this.listenMouseDownRX$) { this.listenMouseDownRX$.unsubscribe(); }
         this.listenMouseDownRX$ = fromEvent(this.panelMainEl.nativeElement, "mousedown").subscribe(
             (event: MouseEvent) => {
                 this.zone.run(() => {
                     // 记录初始坐标点
                     this.panelExtendService.selectionRectModel.startCoord = [event.pageX, event.pageY];
                     this.panelExtendService.launchRecordPanelInfoRect$.next();
-                    if (this.listenMouseMoveRX$) this.listenMouseMoveRX$.unsubscribe();
+                    if (this.listenMouseMoveRX$) { this.listenMouseMoveRX$.unsubscribe(); }
                     this.listenMouseMoveRX$ = fromEvent(document, "mousemove").subscribe((move: MouseEvent) => {
                         // 根据是否按下了空格键来决定鼠标按下的时候是rect选框还是拖动画布
                         if (this.panelExtendService.isOpenSpacebarMove$.value) {
@@ -169,12 +169,12 @@ export class PanelExtendComponent implements OnInit, OnDestroy, AfterViewInit {
                             this.panelExtendService.selectionRectModel.handleCoordShape([move.pageX, move.pageY]);
                         }
                     });
-                    if (this.listenMouseUpRX$) this.listenMouseUpRX$.unsubscribe();
+                    if (this.listenMouseUpRX$) { this.listenMouseUpRX$.unsubscribe(); }
                     this.listenMouseUpRX$ = fromEvent(document, "mouseup").subscribe(() => {
                         this.panelExtendService.selectionRectModel.nextLaunchRectData();
                         this.panelExtendService.selectionRectModel.reset();
-                        if (this.listenMouseMoveRX$) this.listenMouseMoveRX$.unsubscribe();
-                        if (this.listenMouseUpRX$) this.listenMouseUpRX$.unsubscribe();
+                        if (this.listenMouseMoveRX$) { this.listenMouseMoveRX$.unsubscribe(); }
+                        if (this.listenMouseUpRX$) { this.listenMouseUpRX$.unsubscribe(); }
                     });
                 });
             }
@@ -191,10 +191,10 @@ export class PanelExtendComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnDestroy() {
-        if (this.panelSaveIndexedDBRX$) this.panelSaveIndexedDBRX$.unsubscribe();
-        if (this.launchCurrentPageDataRX$) this.launchCurrentPageDataRX$.unsubscribe();
-        if (this.widgetListChangeRX$) this.widgetListChangeRX$.unsubscribe();
-        if (this.launchRecordPanelInfoRectRX$) this.launchRecordPanelInfoRectRX$.unsubscribe();
+        if (this.panelSaveIndexedDBRX$) { this.panelSaveIndexedDBRX$.unsubscribe(); }
+        if (this.launchCurrentPageDataRX$) { this.launchCurrentPageDataRX$.unsubscribe(); }
+        if (this.widgetListChangeRX$) { this.widgetListChangeRX$.unsubscribe(); }
+        if (this.launchRecordPanelInfoRectRX$) { this.launchRecordPanelInfoRectRX$.unsubscribe(); }
         // 关闭全局键盘监听
         this.panelExtendQuickShortcutsService.closeKeyboardEvent();
     }
@@ -229,7 +229,7 @@ export class PanelExtendComponent implements OnInit, OnDestroy, AfterViewInit {
     public acceptScrollXY(type: "x" | "y", data: DraggablePort): void {
         const panelRectHeight = Math.abs(this.panelInfo.top) + this.panelInfo.height + Math.abs(this.panelInfo.bottom);
         const panelRectWidth = this.panelInfo.width;
-        if (!panelRectHeight) this.panelExtendService.launchRecordPanelInfoRect$.next();
+        if (!panelRectHeight) { this.panelExtendService.launchRecordPanelInfoRect$.next(); }
         if (type === "x" && data) {
             const beforLeft = cloneDeep(this.track.x.left);
             const newLeft = (((beforLeft / 100) * panelRectWidth + data.left) / panelRectWidth) * 100;
@@ -270,11 +270,11 @@ export class PanelExtendComponent implements OnInit, OnDestroy, AfterViewInit {
      */
     public acceptMouseDownUp(type: "Down" | "Up"): void {
         // 改变手势
-        if (this.panelExtendService.isOpenSpacebarMove$.value) this.isSpacebarMousedown = type === "Down" ? true : false;
+        if (this.panelExtendService.isOpenSpacebarMove$.value) { this.isSpacebarMousedown = type === "Down" ? true : false; }
         // 鼠标弹起之后取消所有的button的聚焦事件
         if (type === "Up") {
             const currentElement = document.activeElement;
-            if (currentElement.tagName === "BUTTON") currentElement["blur"]();
+            if (currentElement.tagName === "BUTTON") { currentElement["blur"](); }
         }
     }
 
