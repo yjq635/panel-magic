@@ -18,12 +18,12 @@ export class TapCallHandlerComponent implements OnInit, OnDestroy {
 
     constructor(private readonly panelEventService: PanelEventService) {
         this.isShowEventSite$ = this.panelEventService.eventSiteModel.isVisibleModal$.subscribe(b => {
-            if (b == true) {
+            if (b === true) {
                 const _inset_widget = this.panelEventService.currentPanelWidgetModel;
                 if (_inset_widget) {
                     // 如果链接是拨打电话则显示电话号码
                     const _auto_event = _inset_widget.panelEventHandlerModel;
-                    if (_auto_event && _auto_event.eventHandler == "tapCallHandler") {
+                    if (_auto_event && _auto_event.eventHandler === "tapCallHandler") {
                         this.panelEventService.launchCurrentEventIndex$.next(
                             EnumEventHandler[_auto_event.eventHandler]
                         );
@@ -35,7 +35,7 @@ export class TapCallHandlerComponent implements OnInit, OnDestroy {
             }
         });
         this.tabsetIndexChangeRX$ = this.panelEventService.launchCurrentEventIndex$.subscribe((value: number) => {
-            if (EnumEventHandler[value] == "tapCallHandler") {
+            if (EnumEventHandler[value] === "tapCallHandler") {
                 this.panelEventService.eventSiteModel.currentEventModel$.next(this.currentTapCallHandler);
             }
         });

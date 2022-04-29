@@ -68,10 +68,10 @@ export class PanelScopeTextEditorComponent implements OnInit {
     public openKeyboardEnter(): void {
         this.keyboardEnterRX$ = fromEvent(document, "keydown").subscribe((event: KeyboardEvent) => {
             this.zone.run(() => {
-                if (event.keyCode == 13) {
+                if (event.keyCode === 13) {
                     this.saveEditorText();
                     this.exitEditorText();
-                } else if (event.keyCode != 46) {
+                } else if (event.keyCode !== 46) {
                     // 判断文字是否超出组件宽度
                     setTimeout(() => {
                         this.handleInseWidgetTextWidthLength();
@@ -86,7 +86,7 @@ export class PanelScopeTextEditorComponent implements OnInit {
      */
     public handleInseWidgetTextWidthLength(): void {
         const _span_width = this.spanEl.nativeElement.getBoundingClientRect().width;
-        const _is_has_border = this.insetWidget.panelFacadeModel.borderStyle == "none" ? false : true;
+        const _is_has_border = this.insetWidget.panelFacadeModel.borderStyle === "none" ? false : true;
         const _widget_width =
             this.insetWidget.conventionSiteModel.width -
             (_is_has_border ? this.insetWidget.panelFacadeModel.borderNumber * 2 : 0);

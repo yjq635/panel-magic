@@ -56,10 +56,10 @@ export class GalleryGroupComponent implements OnInit {
      */
     public popEditGroupAffirm(data: ImageGroupModel): void {
         data.isEnterEdit = false;
-        if (data.name.trim() == "") {
+        if (data.name.trim() === "") {
             this.nzMessageService.warning("分组名称不能为空");
             data.name = data.fixedName;
-        } else if (data.name != data.fixedName) {
+        } else if (data.name !== data.fixedName) {
             this.galleryGroupService.editPictureGroup().subscribe(b => {
                 if (b) {
                     this.nzMessageService.success("修改分组名称成功");
@@ -98,7 +98,7 @@ export class GalleryGroupComponent implements OnInit {
                         this.galleryGroupService.acquirePictureGroupList().subscribe(list => {
                             this.galleryGroupService.pictureGroupList$.next(list);
                         });
-                        if (data.id == this.currentPictureGroup.id) {
+                        if (data.id === this.currentPictureGroup.id) {
                             this.galleryGroupService.currentPictureGroup$.next(this.pictureGroupList[0]);
                         }
                     }

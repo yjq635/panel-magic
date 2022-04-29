@@ -64,7 +64,7 @@
                 </ng-container>
             </div>
         </ng-container>
-        <ng-container *ngIf="(temporaryLine$ | async) && (temporaryLine$ | async).type == 'h'">
+        <ng-container *ngIf="(temporaryLine$ | async) && (temporaryLine$ | async).type === 'h'">
             <div class="temporary-line tem-h" [ngStyle]="{ left: (temporaryLine$ | async).inPanelNum + 'px' }">
                 <span>{{ (temporaryLine$ | async).inCanvasNum }}</span>
             </div>
@@ -98,7 +98,7 @@
                 </ng-container>
             </div>
         </ng-container>
-        <ng-container *ngIf="(temporaryLine$ | async) && (temporaryLine$ | async).type == 'v'">
+        <ng-container *ngIf="(temporaryLine$ | async) && (temporaryLine$ | async).type === 'v'">
             <div class="temporary-line tem-v" [ngStyle]="{ top: (temporaryLine$ | async).inPanelNum + 'px' }">
                 <span>{{ (temporaryLine$ | async).inCanvasNum }}</span>
             </div>

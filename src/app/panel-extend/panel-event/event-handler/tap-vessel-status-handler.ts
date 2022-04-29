@@ -9,7 +9,7 @@ export class TapVesselStatusHandler extends EventModel {
         return this._toStatusId;
     }
     public set toStatusId(v: string) {
-        this._toStatusId = v == "" ? null : v;
+        this._toStatusId = v === "" ? null : v;
         this.setData({ eventParams: { to_status_id: this.toStatusId } });
     }
 

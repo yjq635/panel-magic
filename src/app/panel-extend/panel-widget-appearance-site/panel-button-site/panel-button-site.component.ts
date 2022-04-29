@@ -23,7 +23,7 @@ export class PanelButtonSiteComponent implements OnInit {
             const wBorderWidth = this.widget.panelFacadeModel.borderNumber;
             const wBorderStyle = this.widget.panelFacadeModel.borderStyle;
             this.widget.addStyleToUltimatelyStyle(
-                value.styleContent(wHeight - (wBorderStyle != "none" ? wBorderWidth * 2 : 0))
+                value.styleContent(wHeight - (wBorderStyle !== "none" ? wBorderWidth * 2 : 0))
             );
             this.widget.panelTextModel.setData(value.getValue());
         }
@@ -37,7 +37,7 @@ export class PanelButtonSiteComponent implements OnInit {
         const wHeight = this.widget.conventionSiteModel.height;
         let allStyle = {
             ...value.styleContent(),
-            "line-height": text.styleContent(wHeight - (value.borderStyle != "none" ? value.borderNumber * 2 : 0))[
+            "line-height": text.styleContent(wHeight - (value.borderStyle !== "none" ? value.borderNumber * 2 : 0))[
                 "line-height"
             ],
         };

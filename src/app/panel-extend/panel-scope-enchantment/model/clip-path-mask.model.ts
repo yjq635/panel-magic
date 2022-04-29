@@ -121,7 +121,7 @@ export class ClipCircleModel {
                 (calcPer(this.circleC.left) - pro.width / 2) ** 2 +
                     (calcPer(this.circleC.top, "height") - pro.height / 2) ** 2
             );
-            return s == 0 ? 1 : s;
+            return s === 0 ? 1 : s;
         };
         /**
          * 进而得出公式

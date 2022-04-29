@@ -79,7 +79,7 @@ export class PanelWidgetAppearanceComponent implements OnInit {
                 if (value) {
                     this.appearance.isShow$.next(true);
                     const insetWidget = this.scopeEnchantment.outerSphereInsetWidgetList$.value;
-                    if (Array.isArray(insetWidget) && insetWidget.length == 1) {
+                    if (Array.isArray(insetWidget) && insetWidget.length === 1) {
                         this.handleSetOnlyWidget();
                     } else if (Array.isArray(insetWidget) && insetWidget.length > 1) {
                         this.handleSetMoreWidget();
@@ -95,7 +95,7 @@ export class PanelWidgetAppearanceComponent implements OnInit {
         this.appearanceIsShowRX$ = this.panelWidgetAppearanceService.appearanceModel.isShow$.subscribe(bool => {
             if (bool) {
                 setTimeout(() => {
-                    if (Array.isArray(this.insetWidgetList) && this.insetWidgetList.length == 1) {
+                    if (Array.isArray(this.insetWidgetList) && this.insetWidgetList.length === 1) {
                         const widgetType = this.insetWidgetList[0].type;
                         if (panelSiteComponentObj[widgetType] && this.otherSiteContainer) {
                             if (this.currentComponentRef) this.currentComponentRef.destroy();
@@ -142,7 +142,7 @@ export class PanelWidgetAppearanceComponent implements OnInit {
             if (this.profileValueChangeRX$) this.profileValueChangeRX$.unsubscribe();
             const insetWidget = this.scopeEnchantment.outerSphereInsetWidgetList$.value;
             this.profileValueChangeRX$ = sphere.valueChange$.pipe(auditTime(10)).subscribe(value => {
-                if (insetWidget.length == 1) {
+                if (insetWidget.length === 1) {
                     let conObj = cloneDeep<ProfileModel>(value);
                     this.conventionSite.setData(conObj);
                 } else {
@@ -182,7 +182,7 @@ export class PanelWidgetAppearanceComponent implements OnInit {
         const pro = this.scopeEnchantment.valueProfileOuterSphere;
         const calcProfile = (e: PanelWidgetModel, pro: OuterSphereHasAuxlModel | ProfileModel): void => {
             let offsetCoord = { left: 0, top: 0 };
-            if (e.profileModel.rotate != 0) {
+            if (e.profileModel.rotate !== 0) {
                 offsetCoord = this.panelScopeEnchantmentService.handleOuterSphereRotateOffsetCoord(e.profileModel);
             }
             const config = {
@@ -193,8 +193,8 @@ export class PanelWidgetAppearanceComponent implements OnInit {
                 center: pro.left + pro.width / 2 - e.profileModel.width / 2,
                 trancenter: pro.top + pro.height / 2 - e.profileModel.height / 2,
             };
-            if (config[type] != undefined) {
-                e.profileModel[type == "left" || type == "right" || type == "center" ? "left" : "top"] = config[type];
+            if (config[type] !== undefined) {
+                e.profileModel[type === "left" || type === "right" || type === "center" ? "left" : "top"] = config[type];
             }
         };
         const equidistanceFn = (type: "width" | "height") => {
@@ -203,19 +203,19 @@ export class PanelWidgetAppearanceComponent implements OnInit {
             const spaceBet = (pro[type] - allWidget) / (widgetList.length - 1);
             const sortList = widgetList.sort((a, b) => {
                 return (
-                    a.profileModel[type == "width" ? "left" : "top"] - b.profileModel[type == "width" ? "left" : "top"]
+                    a.profileModel[type === "width" ? "left" : "top"] - b.profileModel[type === "width" ? "left" : "top"]
                 );
             });
             sortList.forEach((w, i) => {
                 if (i > 0) {
-                    w.profileModel[type == "width" ? "left" : "top"] =
-                        widgetList[i - 1].profileModel[type == "width" ? "left" : "top"] +
+                    w.profileModel[type === "width" ? "left" : "top"] =
+                        widgetList[i - 1].profileModel[type === "width" ? "left" : "top"] +
                         widgetList[i - 1].profileModel[type] +
                         spaceBet;
                 }
             });
         };
-        if (type != "crosswiseEquidistance" && type != "verticalEquidistance") {
+        if (type !== "crosswiseEquidistance" && type !== "verticalEquidistance") {
             widgetList.forEach(e => {
                 calcProfile(
                     e,
@@ -229,9 +229,9 @@ export class PanelWidgetAppearanceComponent implements OnInit {
                           }
                 );
             });
-        } else if (type == "crosswiseEquidistance") {
+        } else if (type === "crosswiseEquidistance") {
             equidistanceFn("width");
-        } else if (type == "verticalEquidistance") {
+        } else if (type === "verticalEquidistance") {
             equidistanceFn("height");
         }
 
@@ -271,7 +271,7 @@ export class PanelWidgetAppearanceComponent implements OnInit {
         };
         insetWidget.forEach(w => {
             ["left", "top", "width", "height", "rotate", "opacity"].forEach(c => {
-                if (w.profileModel[c] != firstP[c]) {
+                if (w.profileModel[c] !== firstP[c]) {
                     config[c] = null;
                 }
             });
@@ -285,7 +285,7 @@ export class PanelWidgetAppearanceComponent implements OnInit {
      */
     public acceptAllValueChange(type: string): void {
         const insetWidget = this.scopeEnchantment.outerSphereInsetWidgetList$.value;
-        if (insetWidget.length == 1) {
+        if (insetWidget.length === 1) {
             this.handleOnlyWidgetStyleContent();
         } else {
             this.handleMoreWidgetStyleContent(type);
@@ -334,7 +334,7 @@ export class PanelWidgetAppearanceComponent implements OnInit {
         const value = this.conventionSite.valueKeys;
         const insetWidget = this.scopeEnchantment.outerSphereInsetWidgetList$.value;
         insetWidget.forEach(e => {
-            if (e.profileModel[type] != undefined) {
+            if (e.profileModel[type] !== undefined) {
                 e.profileModel[type] = value[type];
                 e.addStyleToUltimatelyStyle({
                     width: `${value.width}px`,

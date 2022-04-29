@@ -30,11 +30,11 @@ export class OtherSiteComponent implements OnInit {
 
     public handleChecked(type: string, checkValue: string): void {
         this.autoWidget["style"]["data"][type] =
-            this.autoWidget["style"]["data"][type] == checkValue
+            this.autoWidget["style"]["data"][type] === checkValue
                 ? ((): string => {
                       let _str = "";
-                      if (checkValue == "bold" || checkValue == "italic") _str = "normal";
-                      if (checkValue == "underline") _str = "";
+                      if (checkValue === "bold" || checkValue === "italic") _str = "normal";
+                      if (checkValue === "underline") _str = "";
                       return "";
                   })()
                 : checkValue;

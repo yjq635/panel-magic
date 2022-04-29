@@ -122,7 +122,7 @@
                                 <ul class="asside">
                                     <ng-container *ngFor="let list of pictureGroupList; index as i">
                                         <li class="asside-item" *ngIf="i >= 2" (click)="acceptCheckMoveGroup(list)">
-                                            <div class="block" [class.disable]="currentPictureGroup.id == list.id">
+                                            <div class="block" [class.disable]="currentPictureGroup.id === list.id">
                                                 <span>{{ list.name }}</span>
                                             </div>
                                         </li>

@@ -74,7 +74,7 @@ export class PanelCatalogueComponent implements OnInit {
         if (this.appDataService.currentAppDataForinPageData) {
             this.appDataService.currentAppDataForinPageData.eles = this.panelExtendService.handleSaveWidgetToOrientationModelData();
         }
-        if (page.router != this.appDataService.currentPageData$.value.router) {
+        if (page.router !== this.appDataService.currentPageData$.value.router) {
             this.appDataService.setCurrentPageData(page);
         }
     }
@@ -261,7 +261,7 @@ export class PanelCatalogueComponent implements OnInit {
             const navList = tabbarData.autoWidget.content.tabbarModel.navList;
             if (Array.isArray(navList)) {
                 navList.forEach(n => {
-                    if (n.eventHandler && n.eventHandler == "tapNavigateHandler") {
+                    if (n.eventHandler && n.eventHandler === "tapNavigateHandler") {
                         if (!Object.keys(pageObj).includes(n.eventParams.nav_url)) {
                             n.eventHandler = "";
                             n.eventParams = null;

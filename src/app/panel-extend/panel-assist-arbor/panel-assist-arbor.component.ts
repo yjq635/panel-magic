@@ -153,7 +153,7 @@ export class PanelAssistArborComponent implements OnInit {
                     });
                     /**
                      * 利用圆的公式计算在旋转的时候子集组件的中心点在其对应的椭圆边上
-                     * (x ** 2 ) + (y ** 2) == r ** 2
+                     * (x ** 2 ) + (y ** 2) === r ** 2
                      * 先记录子集组件在以combination的中心点为坐标系圆点计算其对应的坐标
                      * 半径 radius
                      */
@@ -183,7 +183,7 @@ export class PanelAssistArborComponent implements OnInit {
     public createCombination(): void {
         if (this.isCombination) {
             this.panelExtendService.launchSaveIndexedDB$.next();
-            let panelCombination = this.panelSoulService.fixedWidget$.value.find(e => e.type == "combination");
+            let panelCombination = this.panelSoulService.fixedWidget$.value.find(e => e.type === "combination");
             const insetW = this.panelScopeEnchantmentService.scopeEnchantmentModel.outerSphereInsetWidgetList$.value;
             const profile = this.panelScopeEnchantmentService.scopeEnchantmentModel.valueProfileOuterSphere;
             if (panelCombination && insetW.length > 1) {
@@ -201,7 +201,7 @@ export class PanelAssistArborComponent implements OnInit {
                 });
                 insetW.forEach(w => {
                     awaitInjectWidgetUniqueId.push(w.uniqueId);
-                    if (w.type != "combination") {
+                    if (w.type !== "combination") {
                         awaitInjectWidget.push(w);
                     }
                 });
@@ -243,7 +243,7 @@ export class PanelAssistArborComponent implements OnInit {
             const insetWidget = this.panelScopeEnchantmentService.scopeEnchantmentModel.outerSphereInsetWidgetList$
                 .value;
             // 待删除的组合组件的唯一id列表
-            let comWidgetUniqueId = insetWidget.filter(e => e.type == "combination").map(e => e.uniqueId);
+            let comWidgetUniqueId = insetWidget.filter(e => e.type === "combination").map(e => e.uniqueId);
             // 先删除组合组件
             this.panelExtendService.deletePanelWidget(comWidgetUniqueId);
             // 再添加allContentWidget
@@ -262,7 +262,7 @@ export class PanelAssistArborComponent implements OnInit {
         const insetWidget = this.panelScopeEnchantmentService.scopeEnchantmentModel.outerSphereInsetWidgetList$.value;
         let allContentWidget = [];
         insetWidget.forEach(w => {
-            if (w.type == "combination" && Array.isArray(w.autoWidget.content)) {
+            if (w.type === "combination" && Array.isArray(w.autoWidget.content)) {
                 this.handleCombinationChildWidgetProfileData(w);
                 w.autoWidget.content.forEach((e: PanelWidgetModel) => {
                     allContentWidget.push(e);

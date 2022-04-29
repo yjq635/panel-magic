@@ -26,7 +26,7 @@ export class DraggableDirective {
     @Input()
     public set nrIdBody(v: string) {
         setTimeout(() => {
-            if (v != "" && document.querySelector(v)) {
+            if (v !== "" && document.querySelector(v)) {
                 this._nrIdBody = v;
             } else {
                 this._nrIdBody = "#main";
@@ -77,7 +77,7 @@ export class DraggableDirective {
         this.launchMouseIncrement.next(null);
         // 清空之前的鼠标移动事件
         if (this.listenMove$) this.listenMove$.unsubscribe();
-        if (this.nrIsStopPropagation == true) {
+        if (this.nrIsStopPropagation === true) {
             event.stopImmediatePropagation();
             event.stopPropagation();
             event.preventDefault();

@@ -25,13 +25,13 @@ export class TapNavigateHandlerComponent implements OnInit, OnDestroy {
         private readonly panelEventService: PanelEventService
     ) {
         this.isShowEventSite$ = this.panelEventService.eventSiteModel.isVisibleModal$.subscribe(b => {
-            if (b == true) {
+            if (b === true) {
                 const _inset_widget = this.panelEventService.currentPanelWidgetModel;
                 if (_inset_widget) {
                     this.handlePageRouterListData();
                     // 如果链接是跳转页面则显示页面router
                     const _auto_event = _inset_widget.panelEventHandlerModel;
-                    if (_auto_event && _auto_event.eventHandler == "tapNavigateHandler") {
+                    if (_auto_event && _auto_event.eventHandler === "tapNavigateHandler") {
                         this.panelEventService.launchCurrentEventIndex$.next(
                             EnumEventHandler[_auto_event.eventHandler]
                         );
@@ -43,7 +43,7 @@ export class TapNavigateHandlerComponent implements OnInit, OnDestroy {
             }
         });
         this.tabsetIndexChangeRX$ = this.panelEventService.launchCurrentEventIndex$.subscribe((value: number) => {
-            if (EnumEventHandler[value] == "tapNavigateHandler") {
+            if (EnumEventHandler[value] === "tapNavigateHandler") {
                 this.panelEventService.eventSiteModel.currentEventModel$.next(this.currentTapNavigateHandler);
             }
         });
@@ -78,7 +78,7 @@ export class TapNavigateHandlerComponent implements OnInit, OnDestroy {
      * 当选择框打开时计算页面数据
      */
     public acceptSelectOpenChange(isO: boolean): void {
-        if (isO == true) {
+        if (isO === true) {
             this.handlePageRouterListData();
         }
     }

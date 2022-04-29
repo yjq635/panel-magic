@@ -96,57 +96,57 @@ export class PanelExtendQuickShortcutsService {
         this.listenKeyboardDown$ = fromEvent(document, "keydown").subscribe((keyboard: KeyboardEvent) => {
             this.zone.run(() => {
                 // 如果当前获得的焦点标签是输入框且按下了enter键则自动blur；
-                if (document.activeElement.tagName == "INPUT" && keyboard.keyCode == 13) {
+                if (document.activeElement.tagName === "INPUT" && keyboard.keyCode === 13) {
                     document.activeElement["blur"]();
                 }
                 // 如果当前获得的焦点标签不是BODY就关闭键盘事件
-                if (document.activeElement.tagName == "BODY") {
+                if (document.activeElement.tagName === "BODY") {
                     // 按下了ctr+s 或 command+s 执行保存操作
                     if (
-                        (keyboard.metaKey == true && keyboard.keyCode == 83) ||
-                        (keyboard.ctrlKey == true && keyboard.keyCode == 83)
+                        (keyboard.metaKey === true && keyboard.keyCode === 83) ||
+                        (keyboard.ctrlKey === true && keyboard.keyCode === 83)
                     ) {
                         keyboard.preventDefault();
                     }
                     // 按下了ctr+c 或 command+c 执行复制操作
                     if (
-                        (keyboard.metaKey == true && keyboard.keyCode == 67) ||
-                        (keyboard.ctrlKey == true && keyboard.keyCode == 67)
+                        (keyboard.metaKey === true && keyboard.keyCode === 67) ||
+                        (keyboard.ctrlKey === true && keyboard.keyCode === 67)
                     ) {
                         this.performCopy();
                     }
                     // 按下了ctr+v 或command+v 执行粘贴操作
                     if (
-                        (keyboard.metaKey == true && keyboard.keyCode == 86) ||
-                        (keyboard.ctrlKey == true && keyboard.keyCode == 86)
+                        (keyboard.metaKey === true && keyboard.keyCode === 86) ||
+                        (keyboard.ctrlKey === true && keyboard.keyCode === 86)
                     ) {
                         this.performPaste();
                     }
                     // 按下了ctr+a 或command+a 执行全选
                     if (
-                        (keyboard.metaKey == true && keyboard.keyCode == 65) ||
-                        (keyboard.ctrlKey == true && keyboard.keyCode == 65)
+                        (keyboard.metaKey === true && keyboard.keyCode === 65) ||
+                        (keyboard.ctrlKey === true && keyboard.keyCode === 65)
                     ) {
                         this.performCheckAll();
                     }
                     // 按下了ctr+z 或command+z 执行撤销
                     if (
-                        (keyboard.metaKey == true && keyboard.shiftKey == false && keyboard.keyCode == 90) ||
-                        (keyboard.ctrlKey == true && keyboard.shiftKey == false && keyboard.keyCode == 90)
+                        (keyboard.metaKey === true && keyboard.shiftKey === false && keyboard.keyCode === 90) ||
+                        (keyboard.ctrlKey === true && keyboard.shiftKey === false && keyboard.keyCode === 90)
                     ) {
                         this.panelExtendMoveBackService.acquireBackDBData();
                     }
                     // 按下了ctr+shift+z 或command+shift+z 执行前进
                     if (
-                        (keyboard.metaKey == true && keyboard.shiftKey == true && keyboard.keyCode == 90) ||
-                        (keyboard.ctrlKey == true && keyboard.shiftKey == true && keyboard.keyCode == 90)
+                        (keyboard.metaKey === true && keyboard.shiftKey === true && keyboard.keyCode === 90) ||
+                        (keyboard.ctrlKey === true && keyboard.shiftKey === true && keyboard.keyCode === 90)
                     ) {
                         this.panelExtendMoveBackService.acquireMoveDBData();
                     }
                     // 按下了ctr+d 或command+d 执行快捷复制粘贴操作
                     if (
-                        (keyboard.metaKey == true && keyboard.keyCode == 68) ||
-                        (keyboard.ctrlKey == true && keyboard.keyCode == 68)
+                        (keyboard.metaKey === true && keyboard.keyCode === 68) ||
+                        (keyboard.ctrlKey === true && keyboard.keyCode === 68)
                     ) {
                         keyboard.preventDefault();
                         this.performCopy();
@@ -154,31 +154,31 @@ export class PanelExtendQuickShortcutsService {
                     }
                     // 按下了ctr+x 或command+x 执行剪切操作
                     if (
-                        (keyboard.metaKey == true && keyboard.keyCode == 88) ||
-                        (keyboard.ctrlKey == true && keyboard.keyCode == 88)
+                        (keyboard.metaKey === true && keyboard.keyCode === 88) ||
+                        (keyboard.ctrlKey === true && keyboard.keyCode === 88)
                     ) {
                         this.performCutWidget();
                     }
                     // 按下了ctr+g 或command+g 执行组合
                     if (
-                        (keyboard.metaKey == true && keyboard.shiftKey == false && keyboard.keyCode == 71) ||
-                        (keyboard.ctrlKey == true && keyboard.shiftKey == false && keyboard.keyCode == 71)
+                        (keyboard.metaKey === true && keyboard.shiftKey === false && keyboard.keyCode === 71) ||
+                        (keyboard.ctrlKey === true && keyboard.shiftKey === false && keyboard.keyCode === 71)
                     ) {
                         keyboard.preventDefault();
                         this.panelAssistArborService.launchCreateCombination$.next();
                     }
                     // 按下了ctr+shift+g 或command+shift+g 执行打散组合
                     if (
-                        (keyboard.metaKey == true && keyboard.shiftKey == true && keyboard.keyCode == 71) ||
-                        (keyboard.ctrlKey == true && keyboard.shiftKey == true && keyboard.keyCode == 71)
+                        (keyboard.metaKey === true && keyboard.shiftKey === true && keyboard.keyCode === 71) ||
+                        (keyboard.ctrlKey === true && keyboard.shiftKey === true && keyboard.keyCode === 71)
                     ) {
                         keyboard.preventDefault();
                         this.panelAssistArborService.launchDisperseCombination$.next();
                     }
                     // 按下了ctr+h 或command+h 执行隐藏或显示标尺辅助线操作
                     if (
-                        (keyboard.metaKey == true && keyboard.keyCode == 72) ||
-                        (keyboard.ctrlKey == true && keyboard.keyCode == 72)
+                        (keyboard.metaKey === true && keyboard.keyCode === 72) ||
+                        (keyboard.ctrlKey === true && keyboard.keyCode === 72)
                     ) {
                         keyboard.preventDefault();
                         this.panelScaleplateService.controlLineShowOrHide();
@@ -188,31 +188,31 @@ export class PanelExtendQuickShortcutsService {
                         this.performFourOrientation(keyboard);
                     }
                     // 按下了删除键盘
-                    if (keyboard.keyCode == 8 || keyboard.keyCode == 46) {
+                    if (keyboard.keyCode === 8 || keyboard.keyCode === 46) {
                         this.performDelWidget();
                     }
                     // 按下了alt键盘
-                    if (keyboard.keyCode == 18) {
+                    if (keyboard.keyCode === 18) {
                         this.panelScopeEnchantmentService.isOpenAltCalc$.next(false);
                     }
                     // 按下了shift键盘
-                    if (keyboard.keyCode == 16 && keyboard.shiftKey == true) {
+                    if (keyboard.keyCode === 16 && keyboard.shiftKey === true) {
                         this.draggableTensileCursorService.isOpenConstrainShift$.next(true);
                     }
                     // 按下了commadn键
-                    if (keyboard.keyCode == 91 && keyboard.metaKey == true) {
+                    if (keyboard.keyCode === 91 && keyboard.metaKey === true) {
                         this.panelScaleplateService.isOpenMoveLine$.next(true);
                     }
                     // 按下了ctrl键
-                    if (keyboard.keyCode == 17 && keyboard.ctrlKey == true) {
+                    if (keyboard.keyCode === 17 && keyboard.ctrlKey === true) {
                         this.panelScaleplateService.isOpenMoveLine$.next(true);
                     }
                     // 按下了空格键
-                    if (keyboard.keyCode == 32) {
+                    if (keyboard.keyCode === 32) {
                         this.panelExtendService.isOpenSpacebarMove$.next(true);
                     }
                     // 按下了esc键
-                    if (keyboard.keyCode == 27) {
+                    if (keyboard.keyCode === 27) {
                         // this.panelSeniorVesselEditService.exitRoomVessel()
                     }
                 }
@@ -225,7 +225,7 @@ export class PanelExtendQuickShortcutsService {
                 this.panelScaleplateService.isOpenMoveLine$.next(false);
                 this.draggableTensileCursorService.isOpenConstrainShift$.next(false);
                 // 如果当前获得的焦点标签不是BODY就关闭键盘事件
-                if (document.activeElement.tagName == "BODY") {
+                if (document.activeElement.tagName === "BODY") {
                 }
             });
         });
@@ -294,10 +294,10 @@ export class PanelExtendQuickShortcutsService {
         if (this.panelSeniorVesselEditService.isEnterEditVesselCondition$.value) {
             const allContainerWidgetType = Object.keys(panelWidgetComponentObj);
             clipList = clipList.filter(c => {
-                return allContainerWidgetType.includes(c.type) || c.type == "combination";
+                return allContainerWidgetType.includes(c.type) || c.type === "combination";
             });
         }
-        if (clipList.length == 0) {
+        if (clipList.length === 0) {
             this.nzMessageService.warning("无粘贴内容");
         } else {
             const copyC = clipList.map(e => new PanelWidgetModel(cloneDeep(e)));
@@ -392,7 +392,7 @@ export class PanelExtendQuickShortcutsService {
                 url: get(data, "url"),
             });
             // 找出图片的原始itemwidget类
-            const itemWidget = this.panelSoulService.fixedWidget$.value.find(e => e.type == "picture");
+            const itemWidget = this.panelSoulService.fixedWidget$.value.find(e => e.type === "picture");
             if (itemWidget) {
                 // 创建图片widget组件
                 const widget = new PanelWidgetModel(cloneDeep(itemWidget));

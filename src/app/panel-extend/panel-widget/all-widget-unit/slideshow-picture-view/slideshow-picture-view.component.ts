@@ -24,7 +24,7 @@ export class SlideshowPictureViewComponent implements OnInit, OnDestroy {
         return this._widget;
     }
     public set widget(v: PanelWidgetModel) {
-        if (v.type != "") {
+        if (v.type !== "") {
             this._widget = v;
             this.widgetModel = v.autoWidget;
             this.widgetModel.content.pictureAdModel = new PictureAdModel(v.autoWidget.content.pictureAdModel);
@@ -92,7 +92,7 @@ export class SlideshowPictureViewComponent implements OnInit, OnDestroy {
     // 		this.widgetModel.style.data = this.autoWidget.autoWidget.style.data;
     // 		const _profile_value = this.panelScopeEnchantmentService.scopeEnchantmentModel.valueProfileOuterSphere
     // 		const _profile_length = this.panelScopeEnchantmentService.scopeEnchantmentModel.outerSphereInsetWidgetList$.value.length
-    // 		if (_profile_value && _profile_length == 1) {
+    // 		if (_profile_value && _profile_length === 1) {
     // 			_profile_value.setData({ height: _rect.height })
     // 		}
 

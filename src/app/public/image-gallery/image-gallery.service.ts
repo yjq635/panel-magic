@@ -52,7 +52,7 @@ export class ImageGalleryService {
         } else {
             this.currentCheckImageListMap.delete(data.id);
             for (let i = 0; i < checkList.length; i++) {
-                if (checkList[i].id == data.id) {
+                if (checkList[i].id === data.id) {
                     checkList.splice(i, 1);
                     break;
                 }

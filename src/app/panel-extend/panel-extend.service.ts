@@ -69,7 +69,7 @@ export class PanelExtendService {
             arr.forEach(_e => {
                 const copyE = cloneDeep(_e);
                 const widgetE = new PanelWidgetModel(<HostItemModel>{ autoWidget: copyE, type: copyE.type });
-                if (widgetE.type == "combination" && Array.isArray(widgetE.autoWidget.content)) {
+                if (widgetE.type === "combination" && Array.isArray(widgetE.autoWidget.content)) {
                     const content = [];
                     widgetE.autoWidget.content.forEach((w: WidgetModel) => {
                         const copyW = cloneDeep(w);
@@ -96,7 +96,7 @@ export class PanelExtendService {
                         content.push(widgetW);
                     });
                     widgetE.autoWidget.content = content;
-                } else if (widgetE.type == "seniorvessel" && get(widgetE, "autoWidget.content.vesselWidget")) {
+                } else if (widgetE.type === "seniorvessel" && get(widgetE, "autoWidget.content.vesselWidget")) {
                     widgetE.autoWidget.content.vesselWidget = new VesselWidgetModel(
                         get(widgetE, "autoWidget.content.vesselWidget")
                     );
@@ -119,9 +119,9 @@ export class PanelExtendService {
         if (Array.isArray(widgetList)) {
             widgetList.forEach(w => {
                 w = cloneDeep(w);
-                if (w.type == "combination" && Array.isArray(w.autoWidget.content)) {
+                if (w.type === "combination" && Array.isArray(w.autoWidget.content)) {
                     w.autoWidget.content = this.handleCombinationChildWidgetList(w);
-                } else if (w.type == "seniorvessel") {
+                } else if (w.type === "seniorvessel") {
                     w.autoWidget.orientationmodel.left = w.profileModel.left;
                     w.autoWidget.orientationmodel.top = w.profileModel.top;
                     w.autoWidget.orientationmodel.width = w.profileModel.width;
@@ -174,7 +174,7 @@ export class PanelExtendService {
             for (const e in pageObj) {
                 if (Array.isArray(pageObj[e].eles)) {
                     pageObj[e].eles.forEach(widget => {
-                        if (widget.customfeature && widget.customfeature.eventHandler == "tapNavigateHandler") {
+                        if (widget.customfeature && widget.customfeature.eventHandler === "tapNavigateHandler") {
                             const _nav_url = widget.customfeature.eventParams.nav_url;
                             if (!Object.keys(pageObj).includes(_nav_url)) {
                                 widget.customfeature.eventHandler = "";
@@ -195,7 +195,7 @@ export class PanelExtendService {
         if (Array.isArray(widgets)) {
             const { min, max } = this.findZIndexExtremum();
             const uniqueidList = widgets.map(e => e.uniqueId);
-            if (type == "top") {
+            if (type === "top") {
                 // 先按照zindex顺序从小排大
                 widgets = widgets.sort((a, b) => a.profileModel.zIndex - b.profileModel.zIndex);
                 widgets.forEach((w, i) => {
@@ -205,7 +205,7 @@ export class PanelExtendService {
                 });
                 this.deletePanelWidget(uniqueidList);
                 this.nextWidgetList(this.valueWidgetList().concat(widgets));
-            } else if (type == "bottom") {
+            } else if (type === "bottom") {
                 // 先按照zindex顺序从大排小
                 widgets = widgets.sort((a, b) => b.profileModel.zIndex - a.profileModel.zIndex);
                 widgets.forEach((w, i) => {
@@ -242,7 +242,7 @@ export class PanelExtendService {
             newWidget.forEach((w, _i) => {
                 setTimeout(() => (w.uniqueId = `${uniqueId()}${Math.round(Math.random() * 10000)}`));
                 w.profileModel.setData({
-                    zIndex: max == -Infinity ? 1 : max + _i + 1,
+                    zIndex: max === -Infinity ? 1 : max + _i + 1,
                 });
                 w.autoWidget.orientationmodel.left = w.profileModel.left;
                 w.autoWidget.orientationmodel.top = w.profileModel.top;

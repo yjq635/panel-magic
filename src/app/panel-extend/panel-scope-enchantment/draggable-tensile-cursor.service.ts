@@ -103,7 +103,7 @@ export class DraggableTensileCursorService {
      */
     public acceptDraggableCursor(drag: DraggablePort, corner: CornerPinModel): void {
         const insetWidget = this.panelScopeEnchantmentService.scopeEnchantmentModel.outerSphereInsetWidgetList$.value;
-        if (drag && corner.cursor != undefined) {
+        if (drag && corner.cursor !== undefined) {
             const pro = this.panelScopeEnchantmentService.scopeEnchantmentModel.valueProfileOuterSphere;
             const objCur = {
                 l: () => {

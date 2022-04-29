@@ -155,22 +155,22 @@ export class PanelTextModel extends BaseValueChangeClass<PanelTextModel> impleme
     public styleContent(height: number = this.height): { [key: string]: string } {
         return {
             "font-size": `${this.fontSize}px`,
-            "font-weight": this.isBold == true ? "bold" : "normal",
-            "font-style": this.isItalic == true ? "italic" : "normal",
+            "font-weight": this.isBold === true ? "bold" : "normal",
+            "font-style": this.isItalic === true ? "italic" : "normal",
             "text-decoration":
-                this.lineationType == "bottom"
+                this.lineationType === "bottom"
                     ? "underline"
-                    : this.lineationType == "center"
+                    : this.lineationType === "center"
                     ? "line-through"
                     : "initial",
             color: this.fontColor,
-            "text-align": this.crosswiseType == "" ? "initial" : this.crosswiseType,
+            "text-align": this.crosswiseType === "" ? "initial" : this.crosswiseType,
             "line-height":
-                this.verticalType == "top"
+                this.verticalType === "top"
                     ? `${this.fontSize}px`
-                    : this.verticalType == "center"
+                    : this.verticalType === "center"
                     ? `${height}px`
-                    : this.verticalType == "bottom"
+                    : this.verticalType === "bottom"
                     ? `${height * 2 - this.fontSize}px`
                     : "initial",
         };

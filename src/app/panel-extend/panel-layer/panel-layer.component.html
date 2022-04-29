@@ -20,7 +20,7 @@
                                 (emitMouseType)="acceptMouseMoveOut($event, list)"
                             >
                                 <div class="left">
-                                    <ng-container *ngIf="list.widget.autoWidget.type == 'combination'">
+                                    <ng-container *ngIf="list.widget.autoWidget.type === 'combination'">
                                         <i
                                             nz-icon
                                             nzType="caret-down"
@@ -30,7 +30,7 @@
                                             (click)="acceptCombinationWidget(list)"
                                         ></i>
                                     </ng-container>
-                                    <ng-container *ngIf="list.widget.autoWidget.type != 'combination'">
+                                    <ng-container *ngIf="list.widget.autoWidget.type !== 'combination'">
                                         <i class="iconfont_xiaochengxu {{ list.widget.icon }}"></i>
                                     </ng-container>
                                     <span>{{ list.widget.name }}</span>
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <!-- 组合组件图层内列表 -->
-                            <ul class="item-ul" *ngIf="list.widget.autoWidget.type == 'combination' && list.isDropDown">
+                            <ul class="item-ul" *ngIf="list.widget.autoWidget.type === 'combination' && list.isDropDown">
                                 <ng-container *ngFor="let coms of list.combinationWidgetList; index as c">
                                     <li class="item-li">
                                         <div

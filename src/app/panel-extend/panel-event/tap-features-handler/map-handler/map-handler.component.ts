@@ -32,11 +32,11 @@ export class MapHandlerComponent implements OnInit, AfterViewInit, OnDestroy {
         private readonly nzNotificationService: NzNotificationService
     ) {
         this.isShowEventSite$ = this.panelEventService.eventSiteModel.isVisibleModal$.subscribe(b => {
-            if (b == true) {
+            if (b === true) {
                 const _inset_widget = this.panelEventService.currentPanelWidgetModel;
                 if (_inset_widget) {
                     const _auto_event = _inset_widget.panelEventHandlerModel;
-                    if (_auto_event && _auto_event.eventHandler == "tapToMapHandler") {
+                    if (_auto_event && _auto_event.eventHandler === "tapToMapHandler") {
                         const _event_map_params: IMarkersable = <IMarkersable>(<any>_auto_event.eventParams);
                         this.panelEventService.launchCurrentEventIndex$.next(EnumEventHandler["tapFeaturesHandler"]);
                         this.currentTapMapHandler.markersable = _event_map_params;
@@ -57,7 +57,7 @@ export class MapHandlerComponent implements OnInit, AfterViewInit, OnDestroy {
         });
         this.plugin.then(res => {
             this._subscription = res.on("select").subscribe(event => {
-                if (event.poi.id == "") {
+                if (event.poi.id === "") {
                     this.nzNotificationService.create("warning", "地址错误", "请重新输入地址");
                 } else {
                     const _location = event.poi.location;
@@ -75,7 +75,7 @@ export class MapHandlerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         this.map.mapClick.subscribe(res => {
-            if (res["type"] == "click") {
+            if (res["type"] === "click") {
                 this.map.setCenter(res.lnglat);
                 this.mapModel.coordinates = [res.lnglat.M, res.lnglat.O];
                 this.map.getCity().then(_res => {
@@ -107,7 +107,7 @@ export class MapHandlerComponent implements OnInit, AfterViewInit, OnDestroy {
      * 接收标记拖拽的函数
      */
     public acceptMarkerMovEnd(res: any): void {
-        if (res["type"] == "dragend") {
+        if (res["type"] === "dragend") {
             this.map.setCenter(res.lnglat);
             this.mapModel.coordinates = [res.lnglat.M, res.lnglat.O];
             this.map.getCity().then(_res => {

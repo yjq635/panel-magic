@@ -201,7 +201,7 @@ export class ProfileModel extends BaseValueChangeClass<ProfileModel> implements 
 
     // 返回样式
     public get styleContent(): { [key: string]: string } {
-        if (this.width === null || this.height == null) {
+        if (this.width === null || this.height === null) {
             return { display: "none" };
         } else {
             return {

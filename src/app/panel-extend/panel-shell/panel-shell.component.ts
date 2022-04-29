@@ -77,7 +77,7 @@ export class PanelShellComponent implements OnInit, OnDestroy {
             this.tabBarViewService.isShowTabbar$.next(false);
             const currentCustomfeature = this.appDataService.currentAppDataForinPageData.customfeature;
             if (currentCustomfeature) {
-                if (currentCustomfeature.isHasTabbar == true) {
+                if (currentCustomfeature.isHasTabbar === true) {
                     this.acceptTabbarWidgetStatus();
                 }
                 // 同时设置当前页面的标题拦颜色数据
@@ -143,9 +143,9 @@ export class PanelShellComponent implements OnInit, OnDestroy {
     public acceptVesselWidthDrapDrop(drag: DraggablePort, type: "height" | "width"): void {
         if (drag) {
             const widget = this.panelSeniorVesselEditService.currentEditVesselWidget$.value;
-            this.panelInfo.isChangeHeightNow = type == "height" ? true : false;
+            this.panelInfo.isChangeHeightNow = type === "height" ? true : false;
             widget.profileModel.setData({
-                [type]: widget.profileModel[type] + drag[type == "height" ? "top" : "left"],
+                [type]: widget.profileModel[type] + drag[type === "height" ? "top" : "left"],
             });
             if (widget.profileModel[type] < 10) {
                 widget.profileModel.setData({

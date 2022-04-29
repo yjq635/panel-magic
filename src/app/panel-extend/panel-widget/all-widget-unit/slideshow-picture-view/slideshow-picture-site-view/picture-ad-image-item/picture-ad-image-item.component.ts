@@ -62,7 +62,7 @@ export class PictureAdImageItemComponent implements OnInit {
      * 用来根据图片的url获取到原始图片的宽和高
      */
     public handleImageStyleContent(url: string): void {
-        if (url != "") {
+        if (url !== "") {
             let _img_obj = new Image();
             _img_obj.src = url;
             this.currentChangeImgSrcData.width = _img_obj.width;

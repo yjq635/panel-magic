@@ -246,7 +246,7 @@ export class PanelScaleplateComponent implements OnInit, OnDestroy {
     public acceptCanvasMouseEnter(type: lineType): void {
         if (this.mouseMove$) this.mouseMove$.unsubscribe();
         const temLine = new LineModel(type);
-        this.mouseMove$ = fromEvent(type == "h" ? this.hRuler : this.vRuler, "mousemove").subscribe(
+        this.mouseMove$ = fromEvent(type === "h" ? this.hRuler : this.vRuler, "mousemove").subscribe(
             (move: MouseEvent) => {
                 this.zone.run(() => {
                     if (type === "h") {

@@ -66,8 +66,8 @@ export class PanelEventComponent implements OnInit, OnDestroy {
                 if (
                     outer &&
                     Array.isArray(_inset_widget) &&
-                    _inset_widget.length == 1 &&
-                    (_widget_container_list[_inset_widget[0].type] || _inset_widget[0].type == "combination")
+                    _inset_widget.length === 1 &&
+                    (_widget_container_list[_inset_widget[0].type] || _inset_widget[0].type === "combination")
                 ) {
                     this.entranceModel.isShow$.next(true);
                     this.handleWidgetAutoEventHandler(_inset_widget[0]);

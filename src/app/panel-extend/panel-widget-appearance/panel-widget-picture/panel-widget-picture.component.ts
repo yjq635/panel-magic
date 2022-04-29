@@ -43,7 +43,7 @@ export class PanelWidgetPictureComponent implements OnInit {
      */
     public handlePictureProp(width?: number, height?: number): void {
         const insetWidget = this.panelScopeEnchantmentService.scopeEnchantmentModel.outerSphereInsetWidgetList$.value;
-        if (Array.isArray(insetWidget) && insetWidget.length == 1 && insetWidget[0].type === "picture") {
+        if (Array.isArray(insetWidget) && insetWidget.length === 1 && insetWidget[0].type === "picture") {
             const picture = insetWidget[0];
             // 获取原始宽高
             if (picture.autoWidget.content) {

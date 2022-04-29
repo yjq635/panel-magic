@@ -13,7 +13,7 @@
                             <li class="item-li">
                                 <div
                                     class="item-container-li"
-                                    [class.active]="currentStatus == list.uniqueId"
+                                    [class.active]="currentStatus === list.uniqueId"
                                     (click)="checkStatus(list, $event)"
                                     (dblclick)="acceptDbClickStatus(list)"
                                 >

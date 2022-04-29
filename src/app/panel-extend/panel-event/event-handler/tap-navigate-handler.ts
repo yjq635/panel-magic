@@ -7,7 +7,7 @@ export class TapNavigateHandler extends EventModel {
         return this._navUrl;
     }
     public set navUrl(v: string) {
-        this._navUrl = v == "" ? null : v;
+        this._navUrl = v === "" ? null : v;
         this.setData({ eventParams: { nav_url: this.navUrl } });
     }
 

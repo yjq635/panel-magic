@@ -47,15 +47,15 @@ export class ErrorHandlingInterceptor implements HttpInterceptor {
 
     // 通过参数判断是否需要执行错误拦截
     isSkipErrorHandle(req: HttpRequest<any>): boolean | HttpRequest<any> {
-        if (req.method == "GET" && req.params.has(this.skipKey)) {
+        if (req.method === "GET" && req.params.has(this.skipKey)) {
             return req.clone({
                 params: req.params.delete(this.skipKey),
             });
-        } else if (req.method == "POST" && (<Object>req.body).hasOwnProperty(this.skipKey)) {
+        } else if (req.method === "POST" && (<Object>req.body).hasOwnProperty(this.skipKey)) {
             let tempBody = cloneDeep(req.body);
             let newBody = {};
             Object.keys(tempBody)
-                .filter(key => key != this.skipKey)
+                .filter(key => key !== this.skipKey)
                 .forEach(key => {
                     newBody[key] = tempBody[key];
                 });
@@ -73,7 +73,7 @@ export class ErrorHandlingInterceptor implements HttpInterceptor {
      * @param httpResponse
      */
     handleBackHandErr(httpResponse: HttpResponse<IBackHand<any>>) {
-        if (httpResponse.status == 200) {
+        if (httpResponse.status === 200) {
             if (httpResponse.body.status === 0 && !httpResponse.body.reasonCode) {
                 this.nzNotificationService.create("error", "请求错误", httpResponse.body.message);
             } else {
@@ -92,7 +92,7 @@ export class ErrorHandlingInterceptor implements HttpInterceptor {
      * @param err
      */
     handleError(err: HttpErrorResponse): Observable<any> {
-        if (err.name == "HttpErrorResponse") {
+        if (err.name === "HttpErrorResponse") {
             this.nzNotificationService.create("error", "网络超时", "网络请求超时，请重试！");
         } else {
             switch (err.status) {

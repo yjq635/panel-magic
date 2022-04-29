@@ -11,7 +11,7 @@
     (contextmenu)="acceptWidgetRightClick($event)"
 >
     <ng-container *ngIf="widget.autoWidget">
-        <div class="widget-content {{ widget.type }}" *ngIf="widget.type != 'combination'" [ngStyle]="widgetStyle">
+        <div class="widget-content {{ widget.type }}" *ngIf="widget.type !== 'combination'" [ngStyle]="widgetStyle">
             <ng-container [ngSwitch]="widget.type">
                 <!-- 文本 -->
                 <ng-container *ngSwitchCase="'text'">
@@ -55,11 +55,11 @@
             </ng-container>
         </div>
         <!-- 组合 -->
-        <ng-container *ngIf="widget.type == 'combination'">
+        <ng-container *ngIf="widget.type === 'combination'">
             <div class="combination-container" [ngStyle]="widgetStyle">
                 <ng-container *ngFor="let list of widget.autoWidget.content">
                     <ng-container
-                        *ngIf="list.type != 'combination' && (list.profileModel.combinationWidgetData$ | async)"
+                        *ngIf="list.type !== 'combination' && (list.profileModel.combinationWidgetData$ | async)"
                     >
                         <div
                             class="widget-shell"

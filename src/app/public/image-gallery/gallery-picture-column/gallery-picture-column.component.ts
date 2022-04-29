@@ -108,9 +108,9 @@ export class GalleryPictureColumnComponent implements OnInit, OnDestroy {
         this.galleryPictureColumnService.isCheckAll = isAll;
         this.currentPictureList.forEach(e => {
             if (isAll) {
-                if (e.isActive == false) this.imageGalleryService.toggleCheckCurrentImageList(e);
+                if (e.isActive === false) this.imageGalleryService.toggleCheckCurrentImageList(e);
             } else {
-                if (e.isActive == true) this.imageGalleryService.toggleCheckCurrentImageList(e);
+                if (e.isActive === true) this.imageGalleryService.toggleCheckCurrentImageList(e);
             }
         });
     }
@@ -151,10 +151,10 @@ export class GalleryPictureColumnComponent implements OnInit, OnDestroy {
      */
     public popEditImageAffirm(data: ImageModel): void {
         data.isEnterEditName = false;
-        if (data.name.trim() == "") {
+        if (data.name.trim() === "") {
             this.nzMessageService.warning("图片名称不能为空");
             data.name = data.fixedName;
-        } else if (data.name != data.fixedName) {
+        } else if (data.name !== data.fixedName) {
             this.galleryPictureColumnService.editImageName(data.id, data.name).subscribe(b => {
                 if (b) {
                     this.nzMessageService.success("修改图片名称成功");
@@ -232,7 +232,7 @@ export class GalleryPictureColumnComponent implements OnInit, OnDestroy {
      * 选中要移动的分组
      */
     public acceptCheckMoveGroup(group: ImageGroupModel): void {
-        if (group.id != this.currentPictureGroup.id) {
+        if (group.id !== this.currentPictureGroup.id) {
             this.isVisibleEditGroupPopover = false;
             const picList = cloneDeep(this.currentCheckImageList);
             const pictureGroupMap = this.galleryGroupService.pictureGroupListMap;

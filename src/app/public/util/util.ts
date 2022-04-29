@@ -2,8 +2,8 @@
  * 保留小数点取整，不四舍五入
  */
 export const toInteger = (value: number, dig: number = 2): number => {
-    if (value != undefined || value != null) {
-        return dig == 0 ? Math.floor(value) : Math.floor(value * 10 ** dig) / 10 ** dig;
+    if (value !== undefined || value !== null) {
+        return dig === 0 ? Math.floor(value) : Math.floor(value * 10 ** dig) / 10 ** dig;
     }
     return value;
 };

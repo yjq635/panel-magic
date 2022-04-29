@@ -30,13 +30,13 @@ export class TapVesselToStatusHandlerComponent implements OnInit {
         private readonly panelSeniorVesselEditService: PanelSeniorVesselEditService
     ) {
         this.isShowEventSite$ = this.panelEventService.eventSiteModel.isVisibleModal$.subscribe(b => {
-            if (b == true) {
+            if (b === true) {
                 const _inset_widget = this.panelEventService.currentPanelWidgetModel;
                 if (_inset_widget) {
                     this.handleSelectVesselStatusListData();
                     // 如果链接是跳转页面则显示页面router
                     const _auto_event = _inset_widget.panelEventHandlerModel;
-                    if (_auto_event && _auto_event.eventHandler == "tapVesselStatusHandler") {
+                    if (_auto_event && _auto_event.eventHandler === "tapVesselStatusHandler") {
                         this.panelEventService.launchCurrentEventIndex$.next(
                             EnumEventHandler[_auto_event.eventHandler]
                         );
@@ -48,7 +48,7 @@ export class TapVesselToStatusHandlerComponent implements OnInit {
             }
         });
         this.tabsetIndexChangeRX$ = this.panelEventService.launchCurrentEventIndex$.subscribe((value: number) => {
-            if (EnumEventHandler[value] == "tapVesselStatusHandler") {
+            if (EnumEventHandler[value] === "tapVesselStatusHandler") {
                 this.panelEventService.eventSiteModel.currentEventModel$.next(this.currentVesselStatusHandler);
             }
         });
@@ -76,7 +76,7 @@ export class TapVesselToStatusHandlerComponent implements OnInit {
      * 当选择框打开时计算页面数据
      */
     public acceptSelectOpenChange(isO: boolean): void {
-        if (isO == true) {
+        if (isO === true) {
             this.handleSelectVesselStatusListData();
         }
     }

@@ -103,7 +103,7 @@ export class MgrThumbAutoComponent implements OnInit, OnChanges, IThumbConf {
     @Input()
     public set isDomainUrl(v: boolean) {
         this._isDomainUrl = v;
-        if (v == false) {
+        if (v === false) {
             this.fileUrl = "";
         }
     }

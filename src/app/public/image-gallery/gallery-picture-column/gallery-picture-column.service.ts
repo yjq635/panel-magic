@@ -42,12 +42,12 @@ export class GalleryPictureColumnService {
             this.handleCheckAllStatus();
         } else {
             const currentCheckImageList = this.imageGalleryService.currentCheckImageList$.value;
-            if (this.imageGalleryService.selectType$.value == "radio") {
+            if (this.imageGalleryService.selectType$.value === "radio") {
                 this.imageGalleryService.checkImageMap.forEach(e => e.isActive = false);
                 data.isActive = true;
                 this.imageGalleryService.checkImageMap.set(data.id, data);
                 this.imageGalleryService.currentCheckImageList$.next([data]);
-            } else if (this.imageGalleryService.selectType$.value == "checkbox") {
+            } else if (this.imageGalleryService.selectType$.value === "checkbox") {
                 this.imageGalleryService.toggleCheckCurrentImageList(data);
                 // 同时判断是否超出最大数量，是的话则自动过滤旧的数据
                 const maxCount = this.imageGalleryService.maxCount;

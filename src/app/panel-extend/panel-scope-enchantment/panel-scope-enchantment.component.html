@@ -118,7 +118,7 @@
             <ng-container
                 *ngIf="
                     clipPathService.clipPathMaskModel &&
-                    clipPathService.clipPathMaskModel.currentPathType$.value != '' &&
+                    clipPathService.clipPathMaskModel.currentPathType$.value !== '' &&
                     (scopeEnchantment.profileOuterSphere$ | async)
                 "
             >

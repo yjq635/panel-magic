@@ -20,7 +20,7 @@ export class RichTextViewComponent implements OnInit {
         return this._autoWidget;
     }
     public set autoWidget(v: PanelWidgetModel) {
-        if (v["type"] != "") {
+        if (v["type"] !== "") {
             this.widgetModel = v.autoWidget;
             this.widgetModel.customfeature = {
                 changeDetected: () => {

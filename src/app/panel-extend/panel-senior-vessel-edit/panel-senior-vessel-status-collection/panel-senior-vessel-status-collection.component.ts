@@ -57,7 +57,7 @@ export class PanelSeniorVesselStatusCollectionComponent implements OnInit {
         this.panelSeniorVesselEditService.currentStatusInVesselInfo.widgetList = this.panelExtendService.handleSaveWidgetToOrientationModelData(
             this.panelSeniorVesselEditService.riverDiversionWidgetList$.value
         );
-        if (status.uniqueId != this.panelSeniorVesselEditService.currentStatusInVesselInfo.uniqueId) {
+        if (status.uniqueId !== this.panelSeniorVesselEditService.currentStatusInVesselInfo.uniqueId) {
             this.vesselWidgetModel.currentStatusId = status.uniqueId;
             this.panelSeniorVesselEditService.launchCurrentStatusIdChange$.next(status.uniqueId);
         }

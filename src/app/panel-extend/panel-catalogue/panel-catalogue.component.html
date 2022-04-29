@@ -126,7 +126,7 @@
                                 <li
                                     nz-menu-item
                                     *ngFor="let page of list.pages; index as e"
-                                    [nzSelected]="currentPageData ? page.router == currentPageData.router : false"
+                                    [nzSelected]="currentPageData ? page.router === currentPageData.router : false"
                                     (click)="acceptCheckedPage(page)"
                                     [nzTooltipTitle]="page.name"
                                     nzMouseEnterDelay="0.4"
@@ -152,7 +152,7 @@
                                         <a
                                             nz-tooltip
                                             nzTooltipTitle="当前为首页"
-                                            *ngIf="homeRouter == page.router"
+                                            *ngIf="homeRouter === page.router"
                                             class="mr-10 home-page-icon"
                                             (click)="handleHomePageChange(page, $event)"
                                         >
@@ -163,7 +163,7 @@
                                                 <a
                                                     nz-tooltip
                                                     nzTooltipTitle="设为首页"
-                                                    *ngIf="homeRouter != page.router"
+                                                    *ngIf="homeRouter !== page.router"
                                                     class="mr-10"
                                                     (click)="handleHomePageChange(page, $event)"
                                                 >

@@ -48,7 +48,7 @@
                 nzMode="checkable"
                 nz-tooltip
                 nzTooltipTitle="下划线"
-                [nzChecked]="panelText.lineationType == 'bottom'"
+                [nzChecked]="panelText.lineationType === 'bottom'"
                 (nzCheckedChange)="panelText.lineationType = $event ? 'bottom' : ''"
             >
                 <span><i class="iconfont_xiaochengxu xiaochengxu-xiahuaxian"></i></span>
@@ -59,7 +59,7 @@
                 nzMode="checkable"
                 nz-tooltip
                 nzTooltipTitle="中线"
-                [nzChecked]="panelText.lineationType == 'center'"
+                [nzChecked]="panelText.lineationType === 'center'"
                 (nzCheckedChange)="panelText.lineationType = $event ? 'center' : ''"
             >
                 <span><i class="iconfont_xiaochengxu xiaochengxu-zhonghuaxian"></i></span>
@@ -82,7 +82,7 @@
                 nzMode="checkable"
                 nz-tooltip
                 nzTooltipTitle="左对齐"
-                [nzChecked]="panelText.crosswiseType == 'left'"
+                [nzChecked]="panelText.crosswiseType === 'left'"
                 (nzCheckedChange)="panelText.crosswiseType = 'left'"
             >
                 <span>
@@ -95,7 +95,7 @@
                 nzMode="checkable"
                 nz-tooltip
                 nzTooltipTitle="文本居中"
-                [nzChecked]="panelText.crosswiseType == 'center'"
+                [nzChecked]="panelText.crosswiseType === 'center'"
                 (nzCheckedChange)="panelText.crosswiseType = 'center'"
             >
                 <span><i class="iconfont_xiaochengxu xiaochengxu-duiqijuzhong"></i></span>
@@ -106,7 +106,7 @@
                 nzMode="checkable"
                 nz-tooltip
                 nzTooltipTitle="右对齐"
-                [nzChecked]="panelText.crosswiseType == 'right'"
+                [nzChecked]="panelText.crosswiseType === 'right'"
                 (nzCheckedChange)="panelText.crosswiseType = 'right'"
             >
                 <span>
@@ -119,7 +119,7 @@
                 nzMode="checkable"
                 nz-tooltip
                 nzTooltipTitle="置于顶部"
-                [nzChecked]="panelText.verticalType == 'top'"
+                [nzChecked]="panelText.verticalType === 'top'"
                 (nzCheckedChange)="panelText.verticalType = 'top'"
             >
                 <span>
@@ -132,7 +132,7 @@
                 nzMode="checkable"
                 nz-tooltip
                 nzTooltipTitle="垂直居中"
-                [nzChecked]="panelText.verticalType == 'center'"
+                [nzChecked]="panelText.verticalType === 'center'"
                 (nzCheckedChange)="panelText.verticalType = 'center'"
             >
                 <span><i class="iconfont_xiaochengxu xiaochengxu-valignmid"></i></span>
@@ -143,7 +143,7 @@
                 nzMode="checkable"
                 nz-tooltip
                 nzTooltipTitle="置于底部"
-                [nzChecked]="panelText.verticalType == 'bottom'"
+                [nzChecked]="panelText.verticalType === 'bottom'"
                 (nzCheckedChange)="panelText.verticalType = 'bottom'"
             >
                 <span><i class="iconfont_xiaochengxu xiaochengxu-vfoot"></i></span>

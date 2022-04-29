@@ -187,10 +187,10 @@ export class PanelScopeEnchantmentComponent implements OnInit, OnDestroy {
         const allWidget = this.panelExtendService.valueWidgetList();
         const panelInfo = this.panelExtendService.panelInfoModel;
         let resutArr = [];
-        if (port.width != 0 && port.height != 0) {
+        if (port.width !== 0 && port.height !== 0) {
             allWidget.forEach(w => {
                 let offsetCoord = { left: 0, top: 0 };
-                if (w.profileModel.rotate != 0) {
+                if (w.profileModel.rotate !== 0) {
                     offsetCoord = this.panelScopeEnchantmentService.handleOuterSphereRotateOffsetCoord(w.profileModel);
                 }
                 let tLeft = panelInfo.left + w.profileModel.left + offsetCoord.left;
@@ -229,7 +229,7 @@ export class PanelScopeEnchantmentComponent implements OnInit, OnDestroy {
             for (let i: number = 0, l = otherWidgetList.length; i < l; i++) {
                 const pro = otherWidgetList[i].profileModel;
                 const offsetCoor = fnOffset(otherWidgetList[i].profileModel);
-                if (pro.isCheck == false) {
+                if (pro.isCheck === false) {
                     const lLeft = pro.left + offsetCoor.left;
                     const lRight = pro.left + pro.width + offsetCoor.left * -1;
                     const lTop = pro.top + offsetCoor.top;

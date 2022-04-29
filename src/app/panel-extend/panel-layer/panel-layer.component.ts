@@ -55,7 +55,7 @@ export class PanelLayerComponent implements OnInit {
             if (value) {
                 const _type = value.type;
                 if (this.keysObjLayerWidget[value.widget.uniqueId]) {
-                    this.keysObjLayerWidget[value.widget.uniqueId].isHover = _type == "enter" ? true : false;
+                    this.keysObjLayerWidget[value.widget.uniqueId].isHover = _type === "enter" ? true : false;
                 }
             }
         });
@@ -97,7 +97,7 @@ export class PanelLayerComponent implements OnInit {
             const arr = [];
             this.keysObjLayerWidget = {};
             const insetWidget = (_wid: PanelWidgetModel): PanelWidgetModel => {
-                return this.allFixedWidgetList.find(_w => _w.type == _wid.type);
+                return this.allFixedWidgetList.find(_w => _w.type === _wid.type);
             };
             value.forEach(e => {
                 const widgetE = insetWidget(e);
@@ -105,9 +105,9 @@ export class PanelLayerComponent implements OnInit {
                     e.name = widgetE.name;
                     e.icon = widgetE.icon;
                     const layer = new LayerModel(e);
-                    if (e.type == "combination" && Array.isArray(e.autoWidget.content)) {
+                    if (e.type === "combination" && Array.isArray(e.autoWidget.content)) {
                         e.autoWidget.content.forEach(w => {
-                            if (w.type != "combination") {
+                            if (w.type !== "combination") {
                                 const widgetCombination = insetWidget(w);
                                 if (widgetCombination) {
                                     w.name = widgetCombination.name;
@@ -131,10 +131,10 @@ export class PanelLayerComponent implements OnInit {
      * 接收图层的鼠标移入和移出事件
      */
     public acceptMouseMoveOut(type: "enter" | "out", layer: LayerModel): void {
-        if (type == "enter") {
+        if (type === "enter") {
             layer.isHover = true;
             this.panelScopeEnchantmentService.handleTemporaryProfile(layer.widget, "enter");
-        } else if (type == "out") {
+        } else if (type === "out") {
             layer.isHover = false;
             this.panelScopeEnchantmentService.scopeEnchantmentModel.resetProfileTemporary$();
         }
@@ -147,9 +147,9 @@ export class PanelLayerComponent implements OnInit {
         // 如果选中的是组合组件里的子集组件则不允许多选
         const isCombination: boolean = layer.widget.profileModel.combinationWidgetData$.value ? true : false;
         if (!isCombination) {
-            if (mouse.shiftKey == true) {
+            if (mouse.shiftKey === true) {
                 this.pressShiftCheckWidgetList(layer);
-            } else if (mouse.metaKey == true || mouse.ctrlKey == true) {
+            } else if (mouse.metaKey === true || mouse.ctrlKey === true) {
                 this.panelScopeEnchantmentService.toggleOuterSphereInsetWidget(layer.widget);
             } else {
                 this.panelScopeEnchantmentService.onlyOuterSphereInsetWidget(layer.widget);
@@ -175,22 +175,22 @@ export class PanelLayerComponent implements OnInit {
             let _current_widget_index: number = null;
             Object.keys(this.keysObjLayerWidget).forEach((_w, _i) => {
                 layerWidgetList.push(this.keysObjLayerWidget[_w]);
-                if (this.keysObjLayerWidget[_w].isActive == true)
+                if (this.keysObjLayerWidget[_w].isActive === true)
                     _all_is_active_true.push(this.keysObjLayerWidget[_w].widget);
-                if (this.lastOneCheckWidgetLayer$.value.widget.uniqueId == _w) _last_check_index = _i;
-                if (layer.widget.uniqueId == _w) _current_widget_index = _i;
+                if (this.lastOneCheckWidgetLayer$.value.widget.uniqueId === _w) _last_check_index = _i;
+                if (layer.widget.uniqueId === _w) _current_widget_index = _i;
             });
 
             if (_current_widget_index > _last_check_index) {
                 for (let i = _last_check_index; i <= _current_widget_index; i++) {
-                    if (layerWidgetList[i].isActive == false) {
+                    if (layerWidgetList[i].isActive === false) {
                         layerWidgetList[i].isActive = true;
                         _all_is_active_true.push(layerWidgetList[i].widget);
                     }
                 }
             } else if (_current_widget_index < _last_check_index) {
                 for (let i = _current_widget_index; i <= _last_check_index; i++) {
-                    if (layerWidgetList[i].isActive == false) {
+                    if (layerWidgetList[i].isActive === false) {
                         layerWidgetList[i].isActive = true;
                         _all_is_active_true.push(layerWidgetList[i].widget);
                     }

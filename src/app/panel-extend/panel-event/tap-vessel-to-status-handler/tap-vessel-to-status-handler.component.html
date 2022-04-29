@@ -15,7 +15,7 @@
                         *ngFor="let list of selectVesselStatusList$ | async"
                         [nzLabel]="list.name"
                         [nzValue]="list.statusId"
-                        [nzDisabled]="currentStatusId == list.statusId"
+                        [nzDisabled]="currentStatusId === list.statusId"
                     >
                         <ng-template #nzOptionTemplate>
                             <i style="width: 10px;display: inline-block;background-color: #fff;"></i>

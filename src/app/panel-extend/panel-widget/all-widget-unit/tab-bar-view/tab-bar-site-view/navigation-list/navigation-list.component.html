@@ -40,7 +40,7 @@
                         <span class="title">初始图片：</span>
                     </div>
                     <div nz-col [nzSpan]="18">
-                        <ng-container *ngIf="list['initImg'] == ''; else showInitImg">
+                        <ng-container *ngIf="list['initImg'] === ''; else showInitImg">
                             <button
                                 nz-button
                                 nzSize="small"
@@ -63,7 +63,7 @@
                         <span class="title">选中图片：</span>
                     </div>
                     <div nz-col [nzSpan]="18">
-                        <ng-container *ngIf="list['selectImg'] == ''; else selectImg">
+                        <ng-container *ngIf="list['selectImg'] === ''; else selectImg">
                             <button
                                 nz-button
                                 nzSize="small"
@@ -98,7 +98,7 @@
     </div>
     <!-- 添加按钮 -->
     <!-- 5个之后就不显示 -->
-    <ng-container *ngIf="tbsvs.tabbarModel.navList.length != 5">
+    <ng-container *ngIf="tbsvs.tabbarModel.navList.length !== 5">
         <button nz-button [ngStyle]="{ width: '100%' }" [nzType]="'default'" (click)="tbsvs.tabbarModel.addNavList()">
             <span>+ 添加导航</span>
         </button>

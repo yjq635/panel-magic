@@ -45,7 +45,7 @@ export class GalleryPictureCheckedComponent implements OnInit {
 
     public get uploadUrl(): string {
         return `api/upload?app_id=${this.appId}${
-            this.currentPictureGroup && this.currentPictureGroup.id != null
+            this.currentPictureGroup && this.currentPictureGroup.id !== null
                 ? "&group_id=" + this.currentPictureGroup.id
                 : ""
         }`;
@@ -93,10 +93,10 @@ export class GalleryPictureCheckedComponent implements OnInit {
      * 接收文件上传
      */
     public acceptUploadChanged(data: any): void {
-        if (data.type == "success" && get(data, "file.response.status") == 1) {
+        if (data.type === "success" && get(data, "file.response.status") === 1) {
             // 上传成功后
             this.handleSucceddUpload(data.file.response.data);
-        } else if (data.type == "error") {
+        } else if (data.type === "error") {
             this.nzMessageService.error("文件上传失败");
         }
     }
@@ -113,7 +113,7 @@ export class GalleryPictureCheckedComponent implements OnInit {
             fixedName: get(data, "original"),
             url: get(data, "url"),
         });
-        if (this.currentPictureGroup.id != null) {
+        if (this.currentPictureGroup.id !== null) {
             this.pictureGroupList[0].total += 1;
         }
         this.currentPictureList.unshift(imageModel);
@@ -125,7 +125,7 @@ export class GalleryPictureCheckedComponent implements OnInit {
      * 接收确定按钮
      */
     public acceptOkCheckImage(): void {
-        if (this.selectType == "radio") {
+        if (this.selectType === "radio") {
             if (this.currentCheckImageList.length > 0) {
                 const length = this.currentCheckImageList.length;
                 const currentImage = this.currentCheckImageList[length - 1];
@@ -133,7 +133,7 @@ export class GalleryPictureCheckedComponent implements OnInit {
                 currentImage.calcImageSize();
                 this.imageGalleryService.nzOk(currentImage);
             }
-        } else if (this.selectType == "checkbox") {
+        } else if (this.selectType === "checkbox") {
             this.imageGalleryService.nzOk(this.currentCheckImageList);
         }
         this.imageGalleryService.close();

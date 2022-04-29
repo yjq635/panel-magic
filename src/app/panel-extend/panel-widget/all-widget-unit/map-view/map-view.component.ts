@@ -20,7 +20,7 @@ export class MapViewComponent implements OnInit, OnDestroy {
         return this._autoWidget;
     }
     public set autoWidget(v: PanelWidgetModel) {
-        if (v["type"] != "") {
+        if (v["type"] !== "") {
             this._autoWidget = v;
             this.widgetModel = v.autoWidget;
             this.widgetModel.content.mapModel = new MapModel(v.autoWidget.content.mapModel);

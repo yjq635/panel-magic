@@ -230,13 +230,13 @@ export class PanelExtendComponent implements OnInit, OnDestroy {
         const panelRectHeight = Math.abs(this.panelInfo.top) + this.panelInfo.height + Math.abs(this.panelInfo.bottom);
         const panelRectWidth = this.panelInfo.width;
         if (!panelRectHeight) this.panelExtendService.launchRecordPanelInfoRect$.next();
-        if (type == "x" && data) {
+        if (type === "x" && data) {
             const beforLeft = cloneDeep(this.track.x.left);
             const newLeft = (((beforLeft / 100) * panelRectWidth + data.left) / panelRectWidth) * 100;
             this.track.acceptTrackMoveX({ left: newLeft });
             this.transform.translateX -= Math.round((this.track.x.left - beforLeft) * panelRectWidth * 0.018);
             this.panelExtendService.launchRecordPanelInfoRect$.next();
-        } else if (type == "y" && data) {
+        } else if (type === "y" && data) {
             const beforTop = cloneDeep(this.track.y.top);
             const newTop = (((beforTop / 100) * panelRectHeight + data.top) / panelRectHeight) * 100;
             this.track.acceptTrackMoveY({ top: newTop });
@@ -270,11 +270,11 @@ export class PanelExtendComponent implements OnInit, OnDestroy {
      */
     public acceptMouseDownUp(type: "Down" | "Up"): void {
         // 改变手势
-        if (this.panelExtendService.isOpenSpacebarMove$.value) this.isSpacebarMousedown = type == "Down" ? true : false;
+        if (this.panelExtendService.isOpenSpacebarMove$.value) this.isSpacebarMousedown = type === "Down" ? true : false;
         // 鼠标弹起之后取消所有的button的聚焦事件
-        if (type == "Up") {
+        if (type === "Up") {
             const currentElement = document.activeElement;
-            if (currentElement.tagName == "BUTTON") currentElement["blur"]();
+            if (currentElement.tagName === "BUTTON") currentElement["blur"]();
         }
     }
 

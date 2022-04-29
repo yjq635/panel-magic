@@ -22,7 +22,7 @@ export class PanelPictureSiteComponent implements OnInit {
         const wHeight = this.widget.conventionSiteModel.height;
         let allStyle = {
             ...value.styleContent(),
-            "line-height": text.styleContent(wHeight - (value.borderStyle != "none" ? value.borderNumber * 2 : 0))[
+            "line-height": text.styleContent(wHeight - (value.borderStyle !== "none" ? value.borderNumber * 2 : 0))[
                 "line-height"
             ],
         };

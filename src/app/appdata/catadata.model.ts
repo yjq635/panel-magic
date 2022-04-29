@@ -48,7 +48,7 @@ export class CataDataModel implements ICataDataable {
             router: router,
         });
 
-        if (index == -1) {
+        if (index === -1) {
             this.pages.push(awaitPages);
         } else if (index > 0) {
             this.pages.splice(index, 0, awaitPages);

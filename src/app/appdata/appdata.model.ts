@@ -80,9 +80,9 @@ export class AppDataModel implements IAppDataable {
         }
         if ((<Object>data).hasOwnProperty("app_config") && isObject(data.app_config)) {
             for (let e in data.app_config) {
-                if ((e as keyof IAppConfigable) == "tabbarWidget")
+                if ((e as keyof IAppConfigable) === "tabbarWidget")
                     this.app_config.tabbarWidget = new WidgetModel(data.app_config.tabbarWidget);
-                if ((e as keyof IAppConfigable) == "homePageRouter")
+                if ((e as keyof IAppConfigable) === "homePageRouter")
                     this.app_config.homePageRouter = data.app_config.homePageRouter;
             }
         }
@@ -124,7 +124,7 @@ export class AppDataModel implements IAppDataable {
     public addNewPage(data: NewPageModel, index: number = -1): string {
         let router: string = "";
         for (let i: number = 0; i < this.cata_data.length; i++) {
-            if (this.cata_data[i].uniqueId == data.groupId) {
+            if (this.cata_data[i].uniqueId === data.groupId) {
                 router = this.handleNewPageAppData(data.name);
                 this.cata_data[i].newPage(router, data.name, index);
                 break;
@@ -144,7 +144,7 @@ export class AppDataModel implements IAppDataable {
             let number = e.replace(/[^0-9]/gi, "");
             newPage = +number;
         }
-        if (newPage == undefined) newPage = 9999;
+        if (newPage === undefined) newPage = 9999;
         // 此时newPage就是最后一条的page
         // 然后我们就可以把新创建的新页面的数据同时创建在这里了;
         const appDataObject: AppDataObjectModel = <AppDataObjectModel>{

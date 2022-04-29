@@ -34,7 +34,7 @@
                     <!-- 组件库 -->
                     <nz-row nzGutter="16">
                         <ng-container *ngFor="let list of fixedWidgetList">
-                            <nz-col nzSpan="12" *ngIf="list.type != 'combination'">
+                            <nz-col nzSpan="12" *ngIf="list.type !== 'combination'">
                                 <div class="widgte-block" (mousedown)="acceptWidgetDown(list)">
                                     <i class="iconfont_xiaochengxu {{ list.icon }}"></i>
                                     <span>{{ list.name }}</span>

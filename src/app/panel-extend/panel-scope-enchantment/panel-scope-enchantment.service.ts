@@ -71,7 +71,7 @@ export class PanelScopeEnchantmentService {
             outerWidthList.push(widget);
             this.scopeEnchantmentModel.outerSphereInsetWidgetList$.next(outerWidthList);
         } else {
-            const filter = outerWidthList.filter(e => e.uniqueId != widget.uniqueId);
+            const filter = outerWidthList.filter(e => e.uniqueId !== widget.uniqueId);
             widget.profileModel.isCheck = false;
             this.scopeEnchantmentModel.outerSphereInsetWidgetList$.next(filter);
         }
@@ -124,7 +124,7 @@ export class PanelScopeEnchantmentService {
         let minHeightEmpty = Infinity;
         insetWidget.forEach(e => {
             let offsetCoord = { left: 0, top: 0 };
-            if (e.profileModel.rotate != 0 && insetWidget.length > 1) {
+            if (e.profileModel.rotate !== 0 && insetWidget.length > 1) {
                 offsetCoord = this.handleOuterSphereRotateOffsetCoord(e.profileModel);
             }
 
@@ -220,7 +220,7 @@ export class PanelScopeEnchantmentService {
                     outerSphere.left = aux.vLineList[i] - outerSphere.width + offsetAmount.left;
                     outerSphere.rLine = true;
                 }
-                if (outerSphere.lLine == true && outerSphere.rLine === true) break;
+                if (outerSphere.lLine === true && outerSphere.rLine === true) break;
             }
             for (let i: number = 0, l: number = aux.hLineList.length; i < l; i++) {
                 if (Math.abs(aux.hLineList[i] - mouseCoord[1] + offsetAmount.top * -1) <= diffNum) {
@@ -231,7 +231,7 @@ export class PanelScopeEnchantmentService {
                     outerSphere.top = aux.hLineList[i] - outerSphere.height + offsetAmount.top;
                     outerSphere.bLine = true;
                 }
-                if (outerSphere.tLine == true && outerSphere.bLine === true) break;
+                if (outerSphere.tLine === true && outerSphere.bLine === true) break;
             }
             for (let i: number = 0, l: number = aux.hcLineList.length; i < l; i++) {
                 if (Math.abs(aux.hcLineList[i] - (mouseCoord[1] + outerSphere.height / 2)) <= diffNum) {
@@ -289,7 +289,7 @@ export class PanelScopeEnchantmentService {
      * 根据传入的坐标转化为度数，度数范围在0～360
      */
     public conversionTwoCoordToRotate(coord: [number, number]): number {
-        if (!Array.isArray(coord) || coord.length != 2) return 0;
+        if (!Array.isArray(coord) || coord.length !== 2) return 0;
 
         const map: Map<boolean, number> = new Map();
         map.set(coord[0] >= 0 && coord[1] > 0, this.conversionRotateFromRadian(coord[0] / coord[1]));

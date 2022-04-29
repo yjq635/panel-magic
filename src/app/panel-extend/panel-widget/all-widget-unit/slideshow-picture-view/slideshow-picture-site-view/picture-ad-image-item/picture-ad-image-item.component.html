@@ -8,7 +8,7 @@
                 *ngFor="let list of pictureAdModel.imageList; index as i"
             >
                 <!-- 模版类型一二三四五 -->
-                <div class="editor-card" *ngIf="pais.templateType != 6">
+                <div class="editor-card" *ngIf="pais.templateType !== 6">
                     <div class="editor-subentry-content">
                         <div class="common-choice-image">
                             <div class="has-choosed-image">

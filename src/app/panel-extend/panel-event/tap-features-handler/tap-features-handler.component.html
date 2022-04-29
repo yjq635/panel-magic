@@ -5,7 +5,7 @@
             <ul>
                 <li
                     *ngFor="let list of handlePrepareList"
-                    [class.active]="list.type == currentFeatures"
+                    [class.active]="list.type === currentFeatures"
                     (click)="acceptPrepareCheck(list)"
                 >
                     <div class="block">

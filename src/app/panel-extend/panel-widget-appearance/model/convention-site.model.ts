@@ -127,12 +127,12 @@ export class ConventionSiteModel extends BaseValueChangeClass<ConventionSiteMode
         rotate: number;
     } {
         return {
-            opacity: this.opacity == null ? this.opacity : this.opacity * 1,
-            left: this.left == null ? this.left : this.left * 1,
-            top: this.top == null ? this.top : this.top * 1,
-            width: this.width == null ? this.width : this.width * 1,
-            height: this.height == null ? this.height : this.height * 1,
-            rotate: this.rotate == null ? this.rotate : this.rotate * 1,
+            opacity: this.opacity === null ? this.opacity : this.opacity * 1,
+            left: this.left === null ? this.left : this.left * 1,
+            top: this.top === null ? this.top : this.top * 1,
+            width: this.width === null ? this.width : this.width * 1,
+            height: this.height === null ? this.height : this.height * 1,
+            rotate: this.rotate === null ? this.rotate : this.rotate * 1,
         };
     }
 }

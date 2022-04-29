@@ -77,7 +77,7 @@ export class PanelWidgetComponent implements OnInit, OnChanges {
             }
             this.panelLayerService.launchMouseEnterOut.next({ widget: this.widget, type: type });
         }
-        this.isViseableVesselTip = type == "enter" ? true : false;
+        this.isViseableVesselTip = type === "enter" ? true : false;
     }
 
     /**
@@ -89,14 +89,14 @@ export class PanelWidgetComponent implements OnInit, OnChanges {
             event.preventDefault();
             if (
                 !this.panelScopeEnchantmentService.scopeEnchantmentModel.outerSphereInsetWidgetList$.value.some(
-                    w => w.uniqueId == this.widget.uniqueId
+                    w => w.uniqueId === this.widget.uniqueId
                 )
             ) {
-                event.shiftKey == true
+                event.shiftKey === true
                     ? this.panelScopeEnchantmentService.toggleOuterSphereInsetWidget(this.widget)
                     : this.panelScopeEnchantmentService.onlyOuterSphereInsetWidget(this.widget);
             } else {
-                if (event.shiftKey == true) this.panelScopeEnchantmentService.toggleOuterSphereInsetWidget(this.widget);
+                if (event.shiftKey === true) this.panelScopeEnchantmentService.toggleOuterSphereInsetWidget(this.widget);
             }
             this.openMouseMoveLaunch();
         }
@@ -153,7 +153,7 @@ export class PanelWidgetComponent implements OnInit, OnChanges {
      */
     public acceptDoubleClick(): void {
         if (!this.isSimpleFunc) {
-            if (this.widget.type == "text" || this.widget.type == "button") {
+            if (this.widget.type === "text" || this.widget.type === "button") {
                 const textEditor = new PanelScopeTextEditorModel();
                 const content = this.widget.autoWidget.content;
                 const pro = this.widget.conventionSiteModel;
@@ -165,15 +165,15 @@ export class PanelWidgetComponent implements OnInit, OnChanges {
                     height: pro.height,
                     left: pro.left,
                     top: pro.top,
-                    borderNumber: border.borderStyle == "none" ? 0 : border.borderNumber,
+                    borderNumber: border.borderStyle === "none" ? 0 : border.borderNumber,
                     textAlign: <"center" | "left" | "right">textWidget.crosswiseType,
                     fontSize: textWidget.fontSize,
                     fontWeight: textWidget.isBold ? "bold" : "normal",
                     fontStyle: textWidget.isItalic ? "italic" : "normal",
                     textDecoration:
-                        textWidget.lineationType == "bottom"
+                        textWidget.lineationType === "bottom"
                             ? "underline"
-                            : textWidget.lineationType == "center"
+                            : textWidget.lineationType === "center"
                             ? "line-through"
                             : "initial",
                     lineHeight: <any>styleWidget["line-height"].replace("px", "") * 1,
@@ -183,9 +183,9 @@ export class PanelWidgetComponent implements OnInit, OnChanges {
                 // 同时隐藏掉widget里的文字
                 this.widget.isHiddenText = true;
                 this.panelScopeEnchantmentService.panelScopeTextEditorModel$.next(textEditor);
-            } else if (this.widget.type == "picture") {
+            } else if (this.widget.type === "picture") {
                 // 如果是图片组件则双击显示图片选择
-            } else if (this.widget.type == "seniorvessel") {
+            } else if (this.widget.type === "seniorvessel") {
                 // 进入动态容器面板模式
                 this.panelSeniorVesselEditService.openEditVesselRoom(this.widget);
             }

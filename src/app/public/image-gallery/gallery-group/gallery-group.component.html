@@ -6,7 +6,7 @@
 				<li class="item-li">
 					<div
 						class="item-container-li"
-						[class.active]="currentPictureGroup ? currentPictureGroup.id == list.id : false"
+						[class.active]="currentPictureGroup ? currentPictureGroup.id === list.id : false"
 						(click)="acceptCheckGroup(list)"
 						(dblclick)="acceptDbClickGroup(list)"
 					>

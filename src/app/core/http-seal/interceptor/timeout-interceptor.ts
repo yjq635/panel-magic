@@ -27,9 +27,9 @@ export class TimeoutInterceptor implements HttpInterceptor {
                     }, 0),
                     delay(800),
                     tap(errCount => {
-                        //副作用
-                        if (errCount == 1) {
-                            //第一次重试时显示友好信息
+                        // 副作用
+                        if (errCount === 1) {
+                            // 第一次重试时显示友好信息
                             // this.nzNotificationService.info('网络超时','正在重新请求中...')
                         }
                     })

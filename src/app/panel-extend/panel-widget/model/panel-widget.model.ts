@@ -183,7 +183,7 @@ export class PanelWidgetModel extends HostItemModel {
     public delStyleToUltimatelyStyle(key: string): void {
         if (isObject(this.ultimatelyStyle)) {
             for (let e in this.ultimatelyStyle) {
-                if (e == key) {
+                if (e === key) {
                     delete this.ultimatelyStyle[key];
                     break;
                 }
@@ -248,13 +248,13 @@ export class PanelWidgetModel extends HostItemModel {
             _set_obj["height"] = _ori.height;
             if (_style.hasOwnProperty("font-size")) _set_obj["fontSize"] = _style["font-size"].replace("px", "");
             if (_style.hasOwnProperty("font-weight"))
-                _set_obj["isBold"] = _style["font-weight"] == "bold" ? true : false;
+                _set_obj["isBold"] = _style["font-weight"] === "bold" ? true : false;
             if (_style.hasOwnProperty("font-style"))
-                _set_obj["isItalic"] = _style["font-style"] == "italic" ? true : false;
+                _set_obj["isItalic"] = _style["font-style"] === "italic" ? true : false;
             if (_style.hasOwnProperty("text-decoration")) {
-                if (_style["text-decoration"] == "underline") {
+                if (_style["text-decoration"] === "underline") {
                     _set_obj["lineationType"] = "bottom";
-                } else if (_style["text-decoration"] == "line-through") {
+                } else if (_style["text-decoration"] === "line-through") {
                     _set_obj["lineationType"] = "center";
                 }
             }
@@ -268,11 +268,11 @@ export class PanelWidgetModel extends HostItemModel {
                 const _font_size = _style["font-size"].replace("px", "") * 1;
                 const _line_height = _style["line-height"].replace("px", "") * 1;
                 const _height = _style["height"].replace("px", "") * 1;
-                if (_font_size == _line_height) {
+                if (_font_size === _line_height) {
                     _set_obj["verticalType"] = "top";
-                } else if (_height == _line_height) {
+                } else if (_height === _line_height) {
                     _set_obj["verticalType"] = "center";
-                } else if (_height * 2 - _font_size == _line_height) {
+                } else if (_height * 2 - _font_size === _line_height) {
                     _set_obj["verticalType"] = "bottom";
                 }
             }
@@ -297,25 +297,25 @@ export class PanelWidgetModel extends HostItemModel {
                 // 分四种情况
                 if (Array.isArray(_radius_arr)) {
                     _radius_arr = _radius_arr.map(_r => _r.replace("px", "") * 1);
-                    if (_radius_arr.length == 1) {
+                    if (_radius_arr.length === 1) {
                         // 四个边的圆角相同
                         _set_obj["ltRadius"] = _radius_arr[0];
                         _set_obj["rtRadius"] = _radius_arr[0];
                         _set_obj["lbRadius"] = _radius_arr[0];
                         _set_obj["rbRadius"] = _radius_arr[0];
-                    } else if (_radius_arr.length == 2) {
+                    } else if (_radius_arr.length === 2) {
                         // 左上右下 和 右上左下
                         _set_obj["ltRadius"] = _radius_arr[0];
                         _set_obj["rbRadius"] = _radius_arr[0];
                         _set_obj["rtRadius"] = _radius_arr[1];
                         _set_obj["lbRadius"] = _radius_arr[1];
-                    } else if (_radius_arr.length == 3) {
+                    } else if (_radius_arr.length === 3) {
                         // 左上 和 右上左下 和右下
                         _set_obj["ltRadius"] = _radius_arr[0];
                         _set_obj["rtRadius"] = _radius_arr[1];
                         _set_obj["lbRadius"] = _radius_arr[1];
                         _set_obj["rbRadius"] = _radius_arr[2];
-                    } else if (_radius_arr.length == 4) {
+                    } else if (_radius_arr.length === 4) {
                         // 左上 和 右上 和 右下 和 左下
                         _set_obj["ltRadius"] = _radius_arr[0];
                         _set_obj["rtRadius"] = _radius_arr[1];
@@ -349,10 +349,10 @@ export class PanelWidgetModel extends HostItemModel {
                         }
                     });
                     if (Array.isArray(_no_color)) {
-                        _shadow_obj["x"] = _no_color[0] == undefined ? 0 : _no_color[0];
-                        _shadow_obj["y"] = _no_color[1] == undefined ? 0 : _no_color[1];
-                        _shadow_obj["fuzzy"] = _no_color[2] == undefined ? 0 : _no_color[2];
-                        _shadow_obj["spread"] = _no_color[3] == undefined ? 0 : _no_color[3];
+                        _shadow_obj["x"] = _no_color[0] === undefined ? 0 : _no_color[0];
+                        _shadow_obj["y"] = _no_color[1] === undefined ? 0 : _no_color[1];
+                        _shadow_obj["fuzzy"] = _no_color[2] === undefined ? 0 : _no_color[2];
+                        _shadow_obj["spread"] = _no_color[3] === undefined ? 0 : _no_color[3];
                         _shadow_obj["color"] = _color;
                     }
                 }
@@ -369,7 +369,7 @@ export class PanelWidgetModel extends HostItemModel {
         if (this.ultimatelyStyle) {
             const _style = <Object>this.ultimatelyStyle;
             let _filter_obj = {};
-            if (this.type == "picture" && _style.hasOwnProperty("filter") && _style["filter"]) {
+            if (this.type === "picture" && _style.hasOwnProperty("filter") && _style["filter"]) {
                 let _filter_arr = _style["filter"].split(" ");
                 let _rep = (t: string): number => {
                     return <any>t.replace(/[^\d\.]/g, "") * 1;

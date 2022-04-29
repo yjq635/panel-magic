@@ -63,7 +63,7 @@ export class PanelWidgetFacadeComponent implements OnInit {
         const wHeight = this.widget.conventionSiteModel.height;
         const allStyle = {
             ...facade.styleContent(),
-            "line-height": text.styleContent(wHeight - (facade.borderStyle != "none" ? facade.borderNumber * 2 : 0))[
+            "line-height": text.styleContent(wHeight - (facade.borderStyle !== "none" ? facade.borderNumber * 2 : 0))[
                 "line-height"
             ],
         };
