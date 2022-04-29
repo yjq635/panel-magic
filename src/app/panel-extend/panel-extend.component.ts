@@ -155,8 +155,7 @@ export class PanelExtendComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.zone.run(() => {
                     // 记录初始坐标点
                     this.panelExtendService.selectionRectModel.startCoord = [event.pageX, event.pageY];
-                    // this.panelExtendService.launchRecordPanelInfoRect$.next();
-                    /*
+                    this.panelExtendService.launchRecordPanelInfoRect$.next();
                     if (this.listenMouseMoveRX$) { this.listenMouseMoveRX$.unsubscribe(); }
                     this.listenMouseMoveRX$ = fromEvent(document, "mousemove").subscribe((move: MouseEvent) => {
                         // 根据是否按下了空格键来决定鼠标按下的时候是rect选框还是拖动画布
@@ -177,7 +176,6 @@ export class PanelExtendComponent implements OnInit, OnDestroy, AfterViewInit {
                         if (this.listenMouseMoveRX$) { this.listenMouseMoveRX$.unsubscribe(); }
                         if (this.listenMouseUpRX$) { this.listenMouseUpRX$.unsubscribe(); }
                     });
-                     */
                 });
             }
         );
