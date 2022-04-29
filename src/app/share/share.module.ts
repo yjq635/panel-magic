@@ -23,6 +23,7 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import {NzMessageModule} from 'ng-zorro-antd/message';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import {NzFormModule} from 'ng-zorro-antd/form';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 // share 模版一般用于一些通用模块和功能的再次导出，这些模块和功能在应用中到处可用到，减少引入成本
 @NgModule({
@@ -46,7 +47,8 @@ import {NzFormModule} from 'ng-zorro-antd/form';
         NzNotificationModule,
         NzMessageModule,
         NzInputModule,
-        NzFormModule
+        NzFormModule,
+        NzIconModule
     ],
     exports: [CommonModule,
         ReactiveFormsModule,
@@ -72,7 +74,8 @@ import {NzFormModule} from 'ng-zorro-antd/form';
         NzNotificationModule,
         NzMessageModule,
         NzInputModule,
-        NzFormModule
+        NzFormModule,
+        NzIconModule
     ],
 })
 export class ShareModule {}
