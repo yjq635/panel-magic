@@ -1,4 +1,4 @@
-import { Directive, Input, Output, ElementRef, NgZone } from "@angular/core";
+import {Directive, Input, Output, ElementRef, NgZone, OnDestroy} from '@angular/core';
 
 import { DraggablePort } from "@ng-public/directive/draggable/draggable.interface";
 import { fromEvent, Subscription, BehaviorSubject, Subject } from "rxjs";
@@ -6,7 +6,7 @@ import { fromEvent, Subscription, BehaviorSubject, Subject } from "rxjs";
 @Directive({
     selector: `[nrDraggable],[nrIdBody]`,
 })
-export class DraggableDirective {
+export class DraggableDirective implements OnDestroy {
     private listenDown$: Subscription;
     private listenMove$: Subscription;
     private listenUp$: Subscription;
@@ -48,7 +48,7 @@ export class DraggableDirective {
 
     constructor(private el: ElementRef, private zone: NgZone) {
         // 开启鼠标按下监听
-        if (this.listenDown$) this.listenDown$.unsubscribe();
+        if (this.listenDown$) { this.listenDown$.unsubscribe(); }
         this.listenDown$ = fromEvent(this.el.nativeElement, "mousedown").subscribe((event: MouseEvent) => {
             this.zone.run(() => {
                 this.listenMouseDownMove(event);
@@ -57,9 +57,9 @@ export class DraggableDirective {
     }
 
     ngOnDestroy() {
-        if (this.listenDown$) this.listenDown$.unsubscribe();
-        if (this.listenMove$) this.listenMove$.unsubscribe();
-        if (this.listenUp$) this.listenUp$.unsubscribe();
+        if (this.listenDown$) { this.listenDown$.unsubscribe(); }
+        if (this.listenMove$) { this.listenMove$.unsubscribe(); }
+        if (this.listenUp$) { this.listenUp$.unsubscribe(); }
     }
 
     /**
@@ -76,7 +76,7 @@ export class DraggableDirective {
         // 清空之前的默认鼠标位置
         this.launchMouseIncrement.next(null);
         // 清空之前的鼠标移动事件
-        if (this.listenMove$) this.listenMove$.unsubscribe();
+        if (this.listenMove$) { this.listenMove$.unsubscribe(); }
         if (this.nrIsStopPropagation === true) {
             event.stopImmediatePropagation();
             event.stopPropagation();
@@ -93,8 +93,8 @@ export class DraggableDirective {
         // 释放双手，取消所有的监听事件
         this.listenUp$ = fromEvent(document, "mouseup").subscribe(() => {
             this.launchMouseIncrement.next(null);
-            if (this.listenMove$) this.listenMove$.unsubscribe();
-            if (this.listenUp$) this.listenUp$.unsubscribe();
+            if (this.listenMove$) { this.listenMove$.unsubscribe(); }
+            if (this.listenUp$) { this.listenUp$.unsubscribe(); }
         });
     }
 }
