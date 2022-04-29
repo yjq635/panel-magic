@@ -4,20 +4,20 @@
     nzTitle="快捷键"
     [nzFooter]="null"
     (nzOnCancel)="isShowQuickModal = false"
-    nzWidth="640"
+    [nzWidth]="640"
 >
-    <app-panel-soul-quick-shortcuts-modal></app-panel-soul-quick-shortcuts-modal>
+    <app-panel-soul-quick-shortcuts-modal *nzModalContent></app-panel-soul-quick-shortcuts-modal>
 </nz-modal>
 
 <!-- 新建动态容器弹窗 -->
 <nz-modal
     [(nzVisible)]="isVisiableNewVesselModal"
     nzTitle="新建动态容器"
-    nzWidth="420"
+    [nzWidth]="420"
     (nzOnCancel)="acceptVesselCloseModal()"
     (nzOnOk)="acceptVesselOk()"
 >
-    <app-panel-add-new-vessel-widget-modal></app-panel-add-new-vessel-widget-modal>
+        <app-panel-add-new-vessel-widget-modal *nzModalContent></app-panel-add-new-vessel-widget-modal>
 </nz-modal>
 
 <div class="soul-main">

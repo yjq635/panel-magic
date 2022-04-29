@@ -54,31 +54,31 @@
     (nzOnCancel)="closeEventModal()"
     (nzOnOk)="acceptEventOkSite()"
 >
-    <div class="panel-event-main" (mousedown)="$event.stopPropagation()">
-        <!-- 事件设置 -->
-        <div class="event-container-main">
-            <nz-tabset
-                style="width:100%;"
-                [nzTabBarGutter]="0"
-                [nzSelectedIndex]="launchCurrentEventIndex$ | async"
-                (nzSelectChange)="acceptTabsetChange($event)"
-                [nzTabPosition]="'top'"
-            >
-                <nz-tab [nzTitle]="'跳转至页面'">
-                    <app-tap-navigate-handler></app-tap-navigate-handler>
-                </nz-tab>
-                <nz-tab [nzTitle]="'拨打电话'">
-                    <app-tap-call-handler></app-tap-call-handler>
-                </nz-tab>
-                <nz-tab [nzTitle]="'功能'">
-                    <app-tap-features-handler></app-tap-features-handler>
-                </nz-tab>
-                <ng-container *ngIf="isEnterEditVesselCondition">
-                    <nz-tab [nzTitle]="'切换状态'">
-                        <app-tap-vessel-to-status-handler></app-tap-vessel-to-status-handler>
+    <div *nzModalContent class="panel-event-main" (mousedown)="$event.stopPropagation()">
+            <!-- 事件设置 -->
+            <div class="event-container-main">
+                <nz-tabset
+                    style="width:100%;"
+                    [nzTabBarGutter]="0"
+                    [nzSelectedIndex]="launchCurrentEventIndex$ | async"
+                    (nzSelectChange)="acceptTabsetChange($event)"
+                    [nzTabPosition]="'top'"
+                >
+                    <nz-tab [nzTitle]="'跳转至页面'">
+                        <app-tap-navigate-handler></app-tap-navigate-handler>
                     </nz-tab>
-                </ng-container>
-            </nz-tabset>
+                    <nz-tab [nzTitle]="'拨打电话'">
+                        <app-tap-call-handler></app-tap-call-handler>
+                    </nz-tab>
+                    <nz-tab [nzTitle]="'功能'">
+                        <app-tap-features-handler></app-tap-features-handler>
+                    </nz-tab>
+                    <ng-container *ngIf="isEnterEditVesselCondition">
+                        <nz-tab [nzTitle]="'切换状态'">
+                            <app-tap-vessel-to-status-handler></app-tap-vessel-to-status-handler>
+                        </nz-tab>
+                    </ng-container>
+                </nz-tabset>
+            </div>
         </div>
-    </div>
 </nz-modal>
